@@ -30,7 +30,7 @@ For example, to change the `at-rule-no-unknown` rule to use its `ignoreAtRules` 
 
 ```js
 {
-  "extends": "stylelint-config-spaceninja",
+  "extends": "stylelint-config-cloudfour",
   "rules": {
     "at-rule-no-unknown": [ true, {
       "ignoreAtRules": [
