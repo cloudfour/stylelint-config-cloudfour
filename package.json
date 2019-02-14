@@ -1,6 +1,6 @@
 {
   "name": "stylelint-config-cloudfour",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Cloud Four's stylelint config",
   "author": "Cloud Four",
   "keywords": [
@@ -63,6 +63,11 @@
     "plugins": [
       "preset-lint-recommended",
       "preset-lint-consistent"
+    ]
+  },
+  "renovate": {
+    "extends": [
+      "config:base"
     ]
   }
 }
