@@ -1,6 +1,6 @@
 # stylelint-config-cloudfour
 
-[![NPM version](http://img.shields.io/npm/v/stylelint-config-cloudfour.svg)](https://www.npmjs.org/package/stylelint-config-cloudfour) [![Build Status](https://travis-ci.org/spaceninja/stylelint-config-spaceninja.svg?branch=master)](https://travis-ci.org/spaceninja/stylelint-config-spaceninja)
+[![NPM version](http://img.shields.io/npm/v/stylelint-config-cloudfour.svg)](https://www.npmjs.org/package/stylelint-config-cloudfour) [![Build Status](https://travis-ci.org/cloudfour/stylelint-config-cloudfour.svg?branch=master)](https://travis-ci.org/cloudfour/stylelint-config-cloudfour) [![Greenkeeper badge](https://badges.greenkeeper.io/cloudfour/stylelint-config-cloudfour.svg)](https://greenkeeper.io/)
 
 > A sharable stylelint config object that enforces [Cloud Four's CSS Standards](https://github.com/cloudfour/guides/tree/master/css)
 
@@ -11,7 +11,7 @@ Note that this config mostly just extends the [SUIT config](https://github.com/s
 Install [stylelint](https://stylelint.io/) and `stylelint-config-cloudfour`:
 
 ```
-npm install stylelint cloudfour/stylelint-config-cloudfour --save-dev
+npm install stylelint stylelint-config-cloudfour --save-dev
 ```
 
 ## Usage
