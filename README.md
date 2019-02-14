@@ -1,5 +1,7 @@
 # stylelint-config-cloudfour
 
+[![NPM version](http://img.shields.io/npm/v/stylelint-config-cloudfour.svg)](https://www.npmjs.org/package/stylelint-config-cloudfour)
+
 > A sharable stylelint config object that enforces [Cloud Four's CSS Standards](https://github.com/cloudfour/guides/tree/master/css)
 
 Note that this config mostly just extends the [SUIT config](https://github.com/suitcss/stylelint-config-suitcss), and any additions or changes from the SUIT standard should be well-documented here to explain the deviation.
