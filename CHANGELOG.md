@@ -1,3 +1,7 @@
+# 1.0.4 - 2019-02-14
+
+-   Add Renovate
+
 # 1.0.3 - 2019-02-14
 
 -   Updated readme
