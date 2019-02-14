@@ -1,3 +1,7 @@
+# 1.0.5 - 2019-02-14
+
+-   Pin Dependencies
+
 # 1.0.4 - 2019-02-14
 
 -   Add Renovate
