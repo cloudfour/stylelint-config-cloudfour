@@ -1,6 +1,6 @@
 # stylelint-config-cloudfour
 
-[![NPM version](http://img.shields.io/npm/v/stylelint-config-cloudfour.svg)](https://www.npmjs.org/package/stylelint-config-cloudfour)
+[![NPM version](http://img.shields.io/npm/v/stylelint-config-cloudfour.svg)](https://www.npmjs.org/package/stylelint-config-cloudfour) [![Build Status](https://travis-ci.org/spaceninja/stylelint-config-spaceninja.svg?branch=master)](https://travis-ci.org/spaceninja/stylelint-config-spaceninja)
 
 > A sharable stylelint config object that enforces [Cloud Four's CSS Standards](https://github.com/cloudfour/guides/tree/master/css)
 
