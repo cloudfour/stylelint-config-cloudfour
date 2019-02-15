@@ -1,3 +1,7 @@
+# 1.0.6 - 2019-02-15
+
+-   Updated readme and fixed typo in `.travis.yml`
+
 # 1.0.5 - 2019-02-14
 
 -   Pin Dependencies
