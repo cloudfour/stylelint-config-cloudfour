@@ -28,7 +28,7 @@ You'll probably also want to add a script to your `package.json` file to make it
 
 ```json
 "scripts": {
-  "lint:css": "stylelint '**/*.css'
+  "lint:css": "stylelint '**/*.css'"
 }
 ```
 
@@ -52,7 +52,7 @@ Then you can update your `package.json` script to run Prettier as well as Stylel
 
 ```json
 "scripts": {
-  "lint:css": "prettier --list-different '**/*.css' && stylelint '**/*.css'
+  "lint:css": "prettier --list-different '**/*.css' && stylelint '**/*.css'"
 }
 ```
 
