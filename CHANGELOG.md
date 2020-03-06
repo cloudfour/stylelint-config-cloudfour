@@ -1,3 +1,7 @@
+# 3.1.1 - 2020-03-06
+
+-   Fix typo in README. (version bump to deploy to NPM)
+
 # 3.1.0 - 2020-03-06
 
 -   We no longer enforce blank lines before rules after comments.
