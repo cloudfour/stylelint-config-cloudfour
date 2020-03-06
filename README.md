@@ -63,7 +63,7 @@ This is a list of the lints turned on in this configuration (beyond the ones tha
 
 #### At-rule
 
--   [`at-rule-empty-line-before`](https://github.com/stylelint/stylelint/blob/master/lib/rules/at-rule-empty-line-before/): Require an empty line before at-rules, except blockless after blockless. _overriding SUIT rule to further exclude `@custom-media`, `@mixin`, `@import`, and `@for` rules._
+-   [`at-rule-empty-line-before`](https://github.com/stylelint/stylelint/blob/master/lib/rules/at-rule-empty-line-before/): Require an empty line before at-rules, except blockless after blockless. _overriding SUIT rule to further exclude `@custom-media`, `@mixin`, `@include`, `@import`, and `@for` rules._
 
 #### Comments
 

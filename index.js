@@ -7,7 +7,7 @@ module.exports = {
       "always",
       {
         except: ["blockless-after-blockless"],
-        ignoreAtRules: ["custom-media", "mixin", "import", "for"]
+        ignoreAtRules: ["custom-media", "mixin", "include", "import", "for"]
       }
     ],
     "comment-empty-line-before": [
