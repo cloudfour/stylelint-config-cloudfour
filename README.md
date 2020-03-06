@@ -44,7 +44,7 @@ Then add it to your Stylelint config. It'll need to be the last item in the `ext
 
 ```js
 {
-  extends: ["stylelint-config-spaceninja", "stylelint-prettier/recommended"],
+  extends: ["stylelint-config-cloudfour", "stylelint-prettier/recommended"],
 }
 ```
 
