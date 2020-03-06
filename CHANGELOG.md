@@ -1,3 +1,7 @@
+# 3.1.2 - 2020-03-06
+
+-   Fix another typo in README. (version bump to deploy to NPM)
+
 # 3.1.1 - 2020-03-06
 
 -   Fix typo in README. (version bump to deploy to NPM)
