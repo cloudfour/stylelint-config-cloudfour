@@ -26,7 +26,8 @@ module.exports = {
     "rule-empty-line-before": [
       "always-multi-line",
       {
-        except: ["first-nested"]
+        except: ["first-nested"],
+        ignore: ["after-comment"]
       }
     ]
   }
