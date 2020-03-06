@@ -3,13 +3,7 @@
 module.exports = {
   extends: "stylelint-config-suitcss",
   rules: {
-    "at-rule-empty-line-before": [
-      "always",
-      {
-        except: ["blockless-after-blockless"],
-        ignoreAtRules: ["custom-media", "mixin", "include", "import", "for"]
-      }
-    ],
+    "at-rule-empty-line-before": null,
     "comment-empty-line-before": [
       "always",
       {
