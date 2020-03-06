@@ -75,7 +75,7 @@ This is a list of the lints turned on in this configuration (beyond the ones tha
 
 #### Rule
 
--   [`rule-empty-line-before`](https://github.com/stylelint/stylelint/blob/master/lib/rules/rule-empty-line-before/): Require an empty line before multi-line rules. _overriding SUIT rule to exclude the first multi-line rule in a block._
+-   [`rule-empty-line-before`](https://github.com/stylelint/stylelint/blob/master/lib/rules/rule-empty-line-before/): Require an empty line before multi-line rules. _overriding SUIT rule to exclude the first multi-line rule in a block, and to ignore rules following comments._
 
 ## [Changelog](CHANGELOG.md)
 
