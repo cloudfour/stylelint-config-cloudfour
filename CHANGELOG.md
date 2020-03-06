@@ -1,3 +1,8 @@
+# 3.1.0 - 2020-03-06
+
+-   We no longer enforce blank lines before rules after comments.
+-   We no longer enforce empty lines before at-rules.
+
 # 3.0.0 - 2020-02-07
 
 -   Major version bump due dependencies
