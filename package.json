@@ -24,7 +24,7 @@
     "stylelint-config-suitcss": "^14.0.0"
   },
   "devDependencies": {
-    "eslint": "7.5.0",
+    "eslint": "7.6.0",
     "eslint-config-stylelint": "12.0.0",
     "jest": "26.1.0",
     "jest-preset-stylelint": "3.0.0",
