@@ -1,3 +1,8 @@
+# 4.0.0 - 2021-02-22
+
+-   Updated to v15 of `stylelint-config-suitcss`, which updates its peer
+    dependency for `stylelint` to v13.
+
 # 3.1.2 - 2020-03-06
 
 -   Fix another typo in README. (version bump to deploy to NPM)
