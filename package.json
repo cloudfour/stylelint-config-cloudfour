@@ -21,7 +21,7 @@
     "url": "https://github.com/cloudfour/stylelint-config-cloudfour/issues"
   },
   "dependencies": {
-    "stylelint-config-suitcss": "^15.0.0"
+    "stylelint-config-suitcss": "^16.0.0"
   },
   "devDependencies": {
     "eslint": "7.32.0",
