@@ -1,6 +1,6 @@
 # stylelint-config-cloudfour
 
-[![NPM version](http://img.shields.io/npm/v/stylelint-config-cloudfour.svg)](https://www.npmjs.org/package/stylelint-config-cloudfour) [![Build Status](https://travis-ci.org/cloudfour/stylelint-config-cloudfour.svg?branch=main)](https://travis-ci.org/cloudfour/stylelint-config-cloudfour) [![Renovate Status](https://badges.renovateapi.com/github/cloudfour/stylelint-config-cloudfour)](https://renovatebot.com/)
+[![NPM version](http://img.shields.io/npm/v/stylelint-config-cloudfour.svg)](https://www.npmjs.org/package/stylelint-config-cloudfour) [![Build Status](https://github.com/cloudfour/stylelint-config-cloudfour/workflows/CI/badge.svg)](https://github.com/cloudfour/stylelint-config-cloudfour/actions?query=workflow%3ACI) [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
 
 > A sharable stylelint config object that enforces [Cloud Four's CSS Standards](https://github.com/cloudfour/guides/tree/main/css)
 
