@@ -26,7 +26,6 @@ describe('flags no warnings with valid css', () => {
 	});
 });
 
-
 describe('flags warnings with invalid css', () => {
 	let result;
 
