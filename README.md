@@ -112,7 +112,7 @@ This is a list of the lints turned on in this configuration (beyond the ones tha
 
 #### Accessibility
 
-- [`a11y/media-prefers-reduced-motion`](https://github.com/YozhikM/stylelint-a11y/blob/HEAD/src/rules/media-prefers-reduced-motion/README.md):  animations must be paired with `media-prefers-reduced-motion`.
+- [`a11y/media-prefers-reduced-motion`](https://github.com/YozhikM/stylelint-a11y/blob/HEAD/src/rules/media-prefers-reduced-motion/README.md): animations must be paired with `media-prefers-reduced-motion`.
 - [`a11y/no-outline-none`](https://github.com/YozhikM/stylelint-a11y/blob/HEAD/src/rules/no-outline-none/README.md): `:focus` rules with `outline:none` must set a new focus style.
 - [`a11y/selector-pseudo-class-focus`](https://github.com/YozhikM/stylelint-a11y/blob/HEAD/src/rules/selector-pseudo-class-focus/README.md): `:focus` must be set when `:hover` is found.
 
