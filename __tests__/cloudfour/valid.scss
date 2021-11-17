@@ -1,0 +1,14 @@
+@use "library";
+
+.foo {
+  @include library.mixin;
+
+  .bar {
+    color: red;
+  }
+}
+
+.baz {
+  font-size: 16px;
+  font-weight: 700;
+}
