@@ -1,0 +1,18 @@
+@import "something";
+
+%placeholder {
+  color: red;
+}
+
+.foo {
+  @extend %placeholder;
+
+  & .bar {
+    color: red;
+  }
+}
+
+font {
+  size: 16px;
+  weight: 700;
+}
