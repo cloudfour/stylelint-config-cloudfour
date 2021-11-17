@@ -1,4 +1,4 @@
-# Unreleased
+# 5.0.0 - 2021-11-17
 
 - Major version bump due to dependencies
 - Updated `stylelint` to v14.0.0
