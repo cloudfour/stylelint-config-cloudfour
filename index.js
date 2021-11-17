@@ -14,7 +14,13 @@ module.exports = {
 		'declaration-empty-line-before': null,
 		// our rules from here on
 		'alpha-value-notation': null, // not ready for this syntax yet
-		'at-rule-disallowed-list': ['extend'],
+		'at-rule-disallowed-list': [
+			['extend', 'import'],
+			{
+				severity: 'error',
+				message: 'Prefer @use and @forward rather than @import.',
+			},
+		],
 		'at-rule-empty-line-before': null,
 		'comment-empty-line-before': [
 			'always',
