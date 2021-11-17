@@ -13,6 +13,7 @@ module.exports = {
 		// this is being set in stylelint-standard, but we don't want it
 		'declaration-empty-line-before': null,
 		// our rules from here on
+		'alpha-value-notation': null, // not ready for this syntax yet
 		'at-rule-disallowed-list': ['extend'],
 		'at-rule-empty-line-before': null,
 		'comment-empty-line-before': [
