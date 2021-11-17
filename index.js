@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	extends: 'stylelint-config-suitcss',
+	extends: ['stylelint-config-suitcss', 'stylelint-config-standard-scss'],
 	rules: {
 		'at-rule-empty-line-before': null,
 		'comment-empty-line-before': [
@@ -10,6 +10,7 @@ module.exports = {
 				except: ['first-nested'],
 			},
 		],
+		'declaration-empty-line-before': 'never',
 		'max-line-length': [
 			80,
 			{
@@ -24,5 +25,7 @@ module.exports = {
 				ignore: ['after-comment'],
 			},
 		],
+		'scss/declaration-nested-properties': 'never',
+		'scss/selector-no-redundant-nesting-selector': true,
 	},
 };

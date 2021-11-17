@@ -2,6 +2,7 @@
 
 - Major version bump due to dependencies
 - Updated `stylelint` to v14.0.0
+- Add stylelint-config-standard-scss
 
 # 4.0.0 - 2021-02-22
 
