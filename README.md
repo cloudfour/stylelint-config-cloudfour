@@ -115,7 +115,7 @@ This is a list of the lints turned on in this configuration (beyond the ones tha
 
 #### Performance
 
-- [`plugin/no-low-performance-animation-properties`](https://github.com/kristerkari/stylelint-high-performance-animation): Prevent the use of low performance animation and transition properties.
+- [`plugin/no-low-performance-animation-properties`](https://github.com/kristerkari/stylelint-high-performance-animation): Prevent the use of low performance animation and transition properties that trigger `layout`.
 
 ## [Changelog](CHANGELOG.md)
 

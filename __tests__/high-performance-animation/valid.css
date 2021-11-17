@@ -1,3 +1,7 @@
 div {
   transition: transform 350ms ease-in;
 }
+
+.color {
+  transition-property: color;
+}

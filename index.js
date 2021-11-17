@@ -18,7 +18,7 @@ module.exports = {
 				ignorePattern: '/https?://[0-9,a-z]*.*/',
 			},
 		],
-		'plugin/no-low-performance-animation-properties': true,
+		'plugin/no-low-performance-animation-properties': [true, { ignore: 'paint-properties' }],
 		'rule-empty-line-before': [
 			'always-multi-line',
 			{
