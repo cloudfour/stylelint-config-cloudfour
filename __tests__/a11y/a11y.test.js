@@ -44,29 +44,11 @@ describe('flags warnings with invalid css', () => {
 		return result.then((data) => expect(data.results[0].warnings).toHaveLength(3));
 	});
 
-	it('correct warning text', () => {
-		return result.then((data) =>
-			expect(data.results[0].warnings[0].text).toBe(
-				'Expected .baz is used with @media (prefers-reduced-motion) (a11y/media-prefers-reduced-motion)',
-			),
-		);
-	});
-
-	it('correct rule flagged', () => {
-		return result.then((data) =>
-			expect(data.results[0].warnings[0].rule).toBe('a11y/media-prefers-reduced-motion'),
-		);
-	});
-
-	it('correct severity flagged', () => {
-		return result.then((data) => expect(data.results[0].warnings[0].severity).toBe('error'));
-	});
-
-	it('correct line number', () => {
-		return result.then((data) => expect(data.results[0].warnings[0].line).toBe(17));
-	});
-
-	it('correct column number', () => {
-		return result.then((data) => expect(data.results[0].warnings[0].column).toBe(2));
+	it('correct rules flagged', () => {
+		return result.then((data) => {
+			expect(data.results[0].warnings[0].rule).toBe('a11y/media-prefers-reduced-motion');
+			expect(data.results[0].warnings[1].rule).toBe('a11y/no-outline-none');
+			expect(data.results[0].warnings[2].rule).toBe('a11y/selector-pseudo-class-focus');
+		});
 	});
 });
