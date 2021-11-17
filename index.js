@@ -2,6 +2,7 @@
 
 module.exports = {
 	extends: 'stylelint-config-suitcss',
+	plugins: ['stylelint-use-logical-spec'],
 	rules: {
 		'at-rule-empty-line-before': null,
 		'comment-empty-line-before': [
@@ -22,6 +23,14 @@ module.exports = {
 			{
 				except: ['first-nested'],
 				ignore: ['after-comment'],
+			},
+		],
+		'liberty/use-logical-spec': [
+			'always',
+			{
+				// excluding these props until they're better supported
+				// @see https://github.com/cloudfour/cloudfour.com-patterns/issues/1576#issuecomment-969312914
+				except: ['float', 'clear', /^border-.*?radius/i],
 			},
 		],
 	},

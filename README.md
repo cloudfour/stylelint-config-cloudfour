@@ -89,6 +89,10 @@ For example, to change the `at-rule-no-unknown` rule to use its `ignoreAtRules` 
 
 - [stylelint-config-suitcss](https://github.com/suitcss/stylelint-config-suitcss): Configuration rules to ensure your CSS code is compliant with [SUIT CSS's code style](https://github.com/suitcss/suit/blob/master/doc/STYLE.md).
 
+### Plugins
+
+- [stylelint-use-logical-spec](https://github.com/Jordan-Hall/stylelint-use-logical-spec): enforce the usage of [Logical Properties and Values](https://www.w3.org/TR/css-logical-1/) in CSS.
+
 ### Configured Lints
 
 This is a list of the lints turned on in this configuration (beyond the ones that come from `stylelint-config-suitcss`), and what they do.
@@ -108,6 +112,7 @@ This is a list of the lints turned on in this configuration (beyond the ones tha
 #### Rule
 
 - [`rule-empty-line-before`](https://github.com/stylelint/stylelint/blob/master/lib/rules/rule-empty-line-before/): Require an empty line before multi-line rules. _overriding SUIT rule to exclude the first multi-line rule in a block, and to ignore rules following comments._
+- [`liberty/use-logical-spec`](https://github.com/Jordan-Hall/stylelint-use-logical-spec): Always require logical properties and values, except for `float`, `clear`, and `border-radius`.
 
 ## [Changelog](CHANGELOG.md)
 

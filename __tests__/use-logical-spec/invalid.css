@@ -1,0 +1,43 @@
+body {
+  border-bottom: 0;
+  border-bottom-color: red;
+  border-bottom-left-radius: 0; /* should not error */
+  border-bottom-right-radius: 0; /* should not error */
+  border-bottom-style: solid;
+  border-bottom-width: 0;
+  border-left: 0;
+  border-left-color: red;
+  border-left-style: solid;
+  border-left-width: 0;
+  border-right: 0;
+  border-right-color: red;
+  border-right-style: solid;
+  border-right-width: 0;
+  border-top: 0;
+  border-top-color: red;
+  border-top-left-radius: 0; /* should not error */
+  border-top-right-radius: 0; /* should not error */
+  border-top-style: solid;
+  border-top-width: 0;
+  bottom: 0;
+  clear: left; /* should not error */
+  float: left; /* should not error */
+  height: 0;
+  left: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  max-height: 0;
+  max-width: 0;
+  min-height: 0;
+  min-width: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  right: 0;
+  text-align: left;
+  top: 0;
+  width: 0;
+}

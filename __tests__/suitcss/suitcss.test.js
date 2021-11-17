@@ -67,6 +67,6 @@ describe('flags warnings with invalid css', () => {
 	});
 
 	it('correct column number', () => {
-		return result.then((data) => expect(data.results[0].warnings[0].column).toBe(8));
+		return result.then((data) => expect(data.results[0].warnings[0].column).toBe(11));
 	});
 });
