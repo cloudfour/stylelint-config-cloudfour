@@ -6,6 +6,7 @@ a {
 
   @include mixin;
   color: red;
+  text-decoration: none;
 
   @include block {
     color: red;

@@ -41,7 +41,7 @@ describe('flags warnings with invalid scss', () => {
 	});
 
 	it('flags five warnings', () => {
-		return result.then((data) => expect(data.results[0].warnings).toHaveLength(3));
+		return result.then((data) => expect(data.results[0].warnings).toHaveLength(4));
 	});
 
 	it('correct rule flagged', () => {
@@ -49,6 +49,7 @@ describe('flags warnings with invalid scss', () => {
 			expect(data.results[0].warnings[0].rule).toBe('order/order');
 			expect(data.results[0].warnings[1].rule).toBe('order/order');
 			expect(data.results[0].warnings[2].rule).toBe('scss/dollar-variable-empty-line-before');
+			expect(data.results[0].warnings[3].rule).toBe('order/properties-alphabetical-order');
 		});
 	});
 });
