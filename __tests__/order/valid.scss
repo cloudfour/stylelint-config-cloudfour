@@ -16,3 +16,9 @@ a {
     color: blue;
   }
 }
+
+.foo {
+  $scss-variable: red;
+  @include mixin;
+  color: red;
+}
