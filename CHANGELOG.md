@@ -2,6 +2,7 @@
 
 - Major version bump due to dependencies
 - Updated `stylelint` to v14.0.0
+- Added `stylelint-high-performance-animation`
 
 # 4.0.0 - 2021-02-22
 

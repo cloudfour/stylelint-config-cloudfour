@@ -2,6 +2,7 @@
 
 module.exports = {
 	extends: 'stylelint-config-suitcss',
+	plugins: ['stylelint-high-performance-animation'],
 	rules: {
 		'at-rule-empty-line-before': null,
 		'comment-empty-line-before': [
@@ -17,6 +18,7 @@ module.exports = {
 				ignorePattern: '/https?://[0-9,a-z]*.*/',
 			},
 		],
+		'plugin/no-low-performance-animation-properties': true,
 		'rule-empty-line-before': [
 			'always-multi-line',
 			{
