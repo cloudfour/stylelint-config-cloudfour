@@ -110,6 +110,12 @@ This is a list of the lints turned on in this configuration (beyond the ones tha
 
 - [`rule-empty-line-before`](https://github.com/stylelint/stylelint/blob/master/lib/rules/rule-empty-line-before/): Require an empty line before multi-line rules. _overriding SUIT rule to exclude the first multi-line rule in a block, and to ignore rules following comments._
 
+#### Accessibility
+
+- [`a11y/media-prefers-reduced-motion`](https://github.com/YozhikM/stylelint-a11y/blob/HEAD/src/rules/media-prefers-reduced-motion/README.md):  animations must be paired with `media-prefers-reduced-motion`.
+- [`a11y/no-outline-none`](https://github.com/YozhikM/stylelint-a11y/blob/HEAD/src/rules/no-outline-none/README.md): `:focus` rules with `outline:none` must set a new focus style.
+- [`a11y/selector-pseudo-class-focus`](https://github.com/YozhikM/stylelint-a11y/blob/HEAD/src/rules/selector-pseudo-class-focus/README.md): `:focus` must be set when `:hover` is found.
+
 ## [Changelog](CHANGELOG.md)
 
 ## [License](LICENSE)
