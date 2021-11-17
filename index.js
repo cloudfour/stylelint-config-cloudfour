@@ -3,14 +3,15 @@
 module.exports = {
 	extends: ['stylelint-config-standard-scss', 'stylelint-config-suitcss'],
 	rules: {
-		// redeclared from stylelint-config-standard-scss
-		// because suitcss sets to `always`
+		// redeclared from standard-scss because suitcss sets to `always`
 		'block-closing-brace-newline-after': [
 			'always',
 			{
 				ignoreAtRules: ['if', 'else'],
 			},
 		],
+		// this is being set in stylelint-standard, but we don't want it
+		'declaration-empty-line-before': null,
 		// our rules from here on
 		'at-rule-disallowed-list': ['extend'],
 		'at-rule-empty-line-before': null,
@@ -20,8 +21,6 @@ module.exports = {
 				except: ['first-nested'],
 			},
 		],
-		// this is being set in stylelint-standard, but we don't want it
-		'declaration-empty-line-before': null,
 		'max-line-length': [
 			80,
 			{
