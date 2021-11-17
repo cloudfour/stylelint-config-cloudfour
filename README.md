@@ -88,26 +88,27 @@ For example, to change the `at-rule-no-unknown` rule to use its `ignoreAtRules` 
 ### Extends
 
 - [stylelint-config-suitcss](https://github.com/suitcss/stylelint-config-suitcss): Configuration rules to ensure your CSS code is compliant with [SUIT CSS's code style](https://github.com/suitcss/suit/blob/master/doc/STYLE.md).
+- [stylelint-config-standard-scss](https://github.com/stylelint-scss/stylelint-config-standard-scss): The standard shareable SCSS config for Stylelint.
 
 ### Configured Lints
 
-This is a list of the lints turned on in this configuration (beyond the ones that come from `stylelint-config-suitcss`), and what they do.
-
-#### At-rule
+This is a list of the lints turned on in this configuration (beyond the ones that come from `stylelint-config-suitcss` & `stylelint-config-standard-scss`), and what they do.
 
 - [`at-rule-empty-line-before`](https://github.com/stylelint/stylelint/blob/master/lib/rules/at-rule-empty-line-before/README.md): Require an empty line before at-rules. _disabled temporarily, pending [#2480](https://github.com/stylelint/stylelint/issues/2480)_
-
-#### Comments
-
 - [`comment-empty-line-before`](https://github.com/stylelint/stylelint/tree/master/lib/rules/comment-empty-line-before): Require an empty line before comments. _overriding SUIT rule to exclude the first nested comment in a block._
-
-#### General / Sheet
-
 - [`max-line-length`](https://github.com/stylelint/stylelint/blob/master/lib/rules/max-line-length/): Limit line lengths to 80 characters for comments only. _overriding SUIT rule to ignore comments that contain URLs._
-
-#### Rule
-
 - [`rule-empty-line-before`](https://github.com/stylelint/stylelint/blob/master/lib/rules/rule-empty-line-before/): Require an empty line before multi-line rules. _overriding SUIT rule to exclude the first multi-line rule in a block, and to ignore rules following comments._
+
+#### Order
+
+- [`order/order`](https://github.com/hudochenkov/stylelint-order/blob/master/rules/order/README.md): Specifies the order of content within declaration blocks: Variables, `@include` statements, declarations, block `@include` statements, nested rules.
+- [`order/properties-alphabetical-order`](https://github.com/hudochenkov/stylelint-order/blob/master/rules/properties-alphabetical-order/README.md): Specify the alphabetical order of properties within declaration blocks.
+
+#### SCSS
+
+- [`at-rule-disallowed-list`](https://github.com/stylelint/stylelint/blob/main/lib/rules/at-rule-disallowed-list/README.md): Disallow use of `@extend` because it's [considered an anti-pattern](https://csswizardry.com/2016/02/mixins-better-for-performance/), and `@import` because it's [deprecated](https://sass-lang.com/documentation/at-rules/import)
+- [`scss/declaration-nested-properties`](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/declaration-nested-properties/README.md): Disallow SCSS nested property groups, such as `font { size: 16px; weight: 700; }`.
+- [`scss/selector-no-redundant-nesting-selector`](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/selector-no-redundant-nesting-selector/README.md): Disallow redundant nesting selectors (`&`).
 
 ## [Changelog](CHANGELOG.md)
 

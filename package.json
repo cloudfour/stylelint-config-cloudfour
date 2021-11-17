@@ -41,6 +41,7 @@
     ]
   },
   "dependencies": {
+    "stylelint-config-standard-scss": "2.0.1",
     "stylelint-config-suitcss": "^17.0.0"
   },
   "devDependencies": {
