@@ -5,6 +5,7 @@
 - Add stylelint-config-standard-scss
 - Disallow usage of `@extend` and `@import` statements
 - Ensure variables and `@include` statements are declared at the top of declaration blocks.
+- Added `stylelint-high-performance-animation`
 
 # 4.0.0 - 2021-02-22
 
