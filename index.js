@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	extends: 'stylelint-config-suitcss',
+	extends: ['stylelint-config-suitcss', 'stylelint-a11y/recommended'],
 	rules: {
 		'at-rule-empty-line-before': null,
 		'comment-empty-line-before': [

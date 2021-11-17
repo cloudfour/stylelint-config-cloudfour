@@ -1,0 +1,18 @@
+/**
+ * Testing stylelint-a11y
+ *
+ * 1. :focus must be set when :hover is found
+ * 2. :focus rules with outline:none must set a new focus style
+ * 3. animations must be paired with media-prefers-reduced-motion
+ */
+.foo:hover {
+  color: red; /* 1 */
+}
+
+.bar:focus {
+  outline: none; /* 2 */
+}
+
+.baz {
+  transition: left 1s ease-out; /* 3 */
+}

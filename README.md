@@ -88,6 +88,7 @@ For example, to change the `at-rule-no-unknown` rule to use its `ignoreAtRules` 
 ### Extends
 
 - [stylelint-config-suitcss](https://github.com/suitcss/stylelint-config-suitcss): Configuration rules to ensure your CSS code is compliant with [SUIT CSS's code style](https://github.com/suitcss/suit/blob/master/doc/STYLE.md).
+- [stylelint-a11y/recommended](https://github.com/YozhikM/stylelint-a11y): A stylelint config to check the accessibility of your CSS.
 
 ### Configured Lints
 
