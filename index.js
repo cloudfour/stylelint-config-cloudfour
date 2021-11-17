@@ -10,7 +10,8 @@ module.exports = {
 				except: ['first-nested'],
 			},
 		],
-		'declaration-empty-line-before': 'never',
+		// this is being set in stylelint-standard, but we don't want it
+		'declaration-empty-line-before': null,
 		'max-line-length': [
 			80,
 			{
