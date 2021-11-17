@@ -1,8 +1,17 @@
 'use strict';
 
 module.exports = {
-	extends: ['stylelint-config-suitcss', 'stylelint-config-standard-scss'],
+	extends: ['stylelint-config-standard-scss', 'stylelint-config-suitcss'],
 	rules: {
+		// redeclared from stylelint-config-standard-scss
+		// because suitcss sets to `always`
+		'block-closing-brace-newline-after': [
+			'always',
+			{
+				ignoreAtRules: ['if', 'else'],
+			},
+		],
+		// our rules from here on
 		'at-rule-empty-line-before': null,
 		'comment-empty-line-before': [
 			'always',
