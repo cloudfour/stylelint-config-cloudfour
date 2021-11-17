@@ -89,7 +89,6 @@ $theme-colors: (
 }
 
 .selector-b {
-  @extend %message-shared;
   @include theme($theme: DarkRed);
 }
 

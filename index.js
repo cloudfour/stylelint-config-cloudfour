@@ -12,6 +12,7 @@ module.exports = {
 			},
 		],
 		// our rules from here on
+		'at-rule-disallowed-list': ['extend'],
 		'at-rule-empty-line-before': null,
 		'comment-empty-line-before': [
 			'always',
