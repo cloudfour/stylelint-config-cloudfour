@@ -36,6 +36,24 @@ module.exports = {
 				ignore: ['after-comment'],
 			},
 		],
+		'order/order': [
+			[
+				'dollar-variables',
+				'custom-properties',
+				{
+					type: 'at-rule',
+					name: 'include',
+					hasBlock: false,
+				},
+				'declarations',
+				{
+					type: 'at-rule',
+					name: 'include',
+					hasBlock: true,
+				},
+				'rules',
+			],
+		],
 		'scss/declaration-nested-properties': 'never',
 		'scss/selector-no-redundant-nesting-selector': true,
 	},

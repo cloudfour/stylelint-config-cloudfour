@@ -1,0 +1,15 @@
+a {
+  color: red;
+  $scss-variable: red;
+  // stylelint-disable-next-line suitcss/custom-property-no-outside-root
+  --custom-property: red;
+  @include block {
+    color: red;
+  }
+
+  .nested {
+    color: blue;
+  }
+
+  @include mixin;
+}
