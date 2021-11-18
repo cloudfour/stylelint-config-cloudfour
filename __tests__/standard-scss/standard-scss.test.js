@@ -46,13 +46,15 @@ describe('flags warnings with invalid scss', () => {
 
 	it('correct warning text', () => {
 		return result.then((data) =>
-			expect(data.results[0].warnings[0].text).toBe('Expected variable to be kebab-case'),
+			expect(data.results[0].warnings[0].text).toBe(
+				'Unexpected parentheses in argumentless mixin "something" call (scss/at-mixin-argumentless-call-parentheses)',
+			),
 		);
 	});
 
 	it('correct rule flagged', () => {
 		return result.then((data) =>
-			expect(data.results[0].warnings[0].rule).toBe('scss/dollar-variable-pattern'),
+			expect(data.results[0].warnings[0].rule).toBe('scss/at-mixin-argumentless-call-parentheses'),
 		);
 	});
 
@@ -61,10 +63,10 @@ describe('flags warnings with invalid scss', () => {
 	});
 
 	it('correct line number', () => {
-		return result.then((data) => expect(data.results[0].warnings[0].line).toBe(1));
+		return result.then((data) => expect(data.results[0].warnings[0].line).toBe(2));
 	});
 
 	it('correct column number', () => {
-		return result.then((data) => expect(data.results[0].warnings[0].column).toBe(1));
+		return result.then((data) => expect(data.results[0].warnings[0].column).toBe(3));
 	});
 });

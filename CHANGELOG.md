@@ -1,3 +1,8 @@
+# 5.0.1 - 2021-11-17
+
+- Unset all `pattern` rules that `stylelint-standard` set to kebab.
+  This conflicts with SUIT naming rules.
+
 # 5.0.0 - 2021-11-17
 
 - Major version bump due to dependencies

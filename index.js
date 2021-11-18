@@ -11,10 +11,19 @@ module.exports = {
 				ignoreAtRules: ['if', 'else'],
 			},
 		],
-		// this is being set in stylelint-standard, but we don't want it
-		'declaration-empty-line-before': null,
-		// our rules from here on
+		// these are being set in stylelint-standard, but we don't want them
 		'alpha-value-notation': null, // not ready for this syntax yet
+		'custom-media-pattern': null,
+		'custom-property-pattern': null,
+		'declaration-empty-line-before': null, // false errors after SCSS comments
+		'keyframes-name-pattern': null,
+		'scss/at-function-pattern': null,
+		'scss/at-mixin-pattern': null,
+		'scss/dollar-variable-pattern': null,
+		'scss/percent-placeholder-pattern': null,
+		'selector-class-pattern': null,
+		'selector-id-pattern': null,
+		// our rules from here on
 		'at-rule-disallowed-list': [
 			['extend', 'import'],
 			{
