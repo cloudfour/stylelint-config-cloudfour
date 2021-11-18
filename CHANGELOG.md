@@ -1,3 +1,7 @@
+# 5.0.2 - 2021-11-18
+
+- Removed: `no-descending-specificity` rule, due to false positives (#216)
+
 # 5.0.1 - 2021-11-17
 
 - Unset all `pattern` rules that `stylelint-standard` set to kebab.

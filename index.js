@@ -45,7 +45,7 @@ module.exports = {
 				ignorePattern: '/https?://[0-9,a-z]*.*/',
 			},
 		],
-		'plugin/no-low-performance-animation-properties': [true, { ignore: 'paint-properties' }],
+		'no-descending-specificity': null,
 		'rule-empty-line-before': [
 			'always-multi-line',
 			{
@@ -53,6 +53,7 @@ module.exports = {
 				ignore: ['after-comment'],
 			},
 		],
+		// rules from plugins
 		'order/order': [
 			[
 				'dollar-variables',
@@ -71,6 +72,7 @@ module.exports = {
 				'rules',
 			],
 		],
+		'plugin/no-low-performance-animation-properties': [true, { ignore: 'paint-properties' }],
 		'scss/declaration-nested-properties': 'never',
 		'scss/selector-no-redundant-nesting-selector': true,
 	},
