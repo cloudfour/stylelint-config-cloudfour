@@ -1,3 +1,7 @@
+# 5.1.0 - 2022-02-16
+
+- Added `camelCaseSvgKeywords` rule to `value-case-keyword`, to allow continued use of `currentColor`.
+
 # 5.0.2 - 2021-11-18
 
 - Removed: `no-descending-specificity` rule, due to false positives (#216)
