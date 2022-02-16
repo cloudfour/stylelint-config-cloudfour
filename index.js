@@ -53,6 +53,12 @@ module.exports = {
 				ignore: ['after-comment'],
 			},
 		],
+		'value-keyword-case': [
+			'lower',
+			{
+				camelCaseSvgKeywords: true,
+			},
+		],
 		// rules from plugins
 		'order/order': [
 			[
