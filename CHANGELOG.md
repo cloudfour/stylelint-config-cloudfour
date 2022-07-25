@@ -1,3 +1,7 @@
+# 6.0.0 - 2022-07-25
+
+- Removed: `stylelint` less than `14.9.0` from peer dependencies.
+
 # 5.1.0 - 2022-02-16
 
 - Added `camelCaseSvgKeywords` rule to `value-case-keyword`, to allow continued use of `currentColor`.
