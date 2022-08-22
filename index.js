@@ -53,6 +53,7 @@ module.exports = {
 				ignore: ['after-comment'],
 			},
 		],
+		'selector-not-notation': 'simple', // @see https://github.com/cloudfour/cloudfour.com-patterns/pull/1992#issuecomment-1201454396
 		'value-keyword-case': [
 			'lower',
 			{

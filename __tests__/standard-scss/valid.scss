@@ -145,3 +145,7 @@ $theme-colors: (
   from { opacity: 0%; }
   to { opacity: 100%; }
 }
+
+:not(a):not(div) {
+  color: red;
+}
