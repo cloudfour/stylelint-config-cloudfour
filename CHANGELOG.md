@@ -1,3 +1,8 @@
+# 7.0.0 - 2022-12-13
+
+- Major version bump due to dependencies
+- Updated `stylelint-config-standard-scss` to v6
+
 # 6.1.0 - 2022-08-22
 
 - Change `selector-not-notation` to "simple".
