@@ -1,9 +1,11 @@
+@forward "something";
 @use "base";
 @use "sass:list";
 @use "sass:map";
 @use "sass:math";
 @use "sass:meta";
 @use "sass:string";
+@use "something-else";
 
 // Multi-line double-slash comment
 // comment
@@ -19,6 +21,10 @@
   }
 
   @return $new-list;
+}
+
+@function -private-function() {
+  @return true;
 }
 
 @mixin corner-icon($name, $top-or-bottom, $left-or-right) {
@@ -53,11 +59,20 @@
   box-shadow: 0 0 1px rgb($theme / 25%);
 }
 
+@mixin -private-mixin() {
+  border: 1px;
+}
+
 %message-shared {
   border: 1px solid #ccc;
   color: #333;
 }
 
+%-private-placeholder {
+  border: 1px;
+}
+
+$-private-size: 10rem;
 $local-color: #333;
 $fonts: "Tahoma", "Helvetica Neue", "Helvetica", sans-serif;
 $theme-colors: (
@@ -89,12 +104,13 @@ $theme-colors: (
 }
 
 .selector-b {
+  // @extend %message-shared;
   @include theme($theme: DarkRed);
 }
 
 /* Single-line comment */
 
-@media (min-width: 60em) {
+@media (width >= 60em) {
   .selector {
     // Flush to parent comment
     @include corner-icon("mail", top, left);
@@ -120,8 +136,8 @@ $theme-colors: (
 // Multi-line double-slash comment
 // comment
 @media
-  screen and (min-resolution: 192dpi),
-  screen and (min-resolution: 2dppx) {
+  screen and (resolution >= 192dpi),
+  screen and (resolution >= 2dppx) {
   .selector {
     background-image:
       repeating-linear-gradient(
@@ -142,10 +158,6 @@ $theme-colors: (
 }
 
 @keyframes fade-in {
-  from { opacity: 0%; }
-  to { opacity: 100%; }
-}
-
-:not(a):not(div) {
-  color: red;
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

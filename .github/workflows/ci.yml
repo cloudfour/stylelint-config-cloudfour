@@ -18,7 +18,8 @@ jobs:
           node-version: 'lts/*'
           cache: 'npm'
       - name: Install dependencies 👨🏻‍💻
-        run: npm ci
+        # Adding --force: https://github.com/suitcss/stylelint-config-suitcss/pull/56
+        run: npm ci --force
       - name: Run linter 👀
         run: npm run lint:check
       - name: Run tests 🧪

@@ -1,11 +1,11 @@
 'use strict';
 
-const config = require('../../');
-const fs = require('fs');
+const fs = require('node:fs');
 const stylelint = require('stylelint');
+const config = require('../../index.js');
 
-const validScss = fs.readFileSync('./__tests__/recommended-scss/valid.scss', 'utf-8');
-const invalidScss = fs.readFileSync('./__tests__/recommended-scss/invalid.scss', 'utf-8');
+const validScss = fs.readFileSync('./__tests__/recommended-scss/valid.scss', 'utf8');
+const invalidScss = fs.readFileSync('./__tests__/recommended-scss/invalid.scss', 'utf8');
 
 describe('flags no warnings with valid scss', () => {
 	let result;

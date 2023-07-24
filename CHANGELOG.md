@@ -1,5 +1,7 @@
 # Unreleased
 
+- Updated `stylelint` peer dependency to v15
+- Updated `stylelint-config-standard-scss` to v10
 - Updated `stylelint-config-suitcss` to v19
 
 # 7.0.0 - 2022-12-13
