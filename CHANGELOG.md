@@ -1,3 +1,7 @@
+# Unreleased
+
+- Updated `stylelint-config-suitcss` to v19
+
 # 7.0.0 - 2022-12-13
 
 - Major version bump due to dependencies
