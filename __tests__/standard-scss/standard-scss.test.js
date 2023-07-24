@@ -46,7 +46,9 @@ describe('flags warnings with invalid scss', () => {
 
 	it('correct warning text', () => {
 		return result.then((data) =>
-			expect(data.results[0].warnings[0].text).toBe('Unexpected parentheses in argumentless mixin "something" call (scss/at-mixin-argumentless-call-parentheses)'),
+			expect(data.results[0].warnings[0].text).toBe(
+				'Unexpected parentheses in argumentless mixin "something" call (scss/at-mixin-argumentless-call-parentheses)',
+			),
 		);
 	});
 
