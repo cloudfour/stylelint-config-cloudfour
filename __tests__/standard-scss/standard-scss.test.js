@@ -1,11 +1,11 @@
 'use strict';
 
-const config = require('../..');
-const fs = require('fs');
+const fs = require('node:fs');
 const stylelint = require('stylelint');
+const config = require('../../index.js');
 
-const validScss = fs.readFileSync('./__tests__/standard-scss/valid.scss', 'utf-8');
-const invalidScss = fs.readFileSync('./__tests__/standard-scss/invalid.scss', 'utf-8');
+const validScss = fs.readFileSync('./__tests__/standard-scss/valid.scss', 'utf8');
+const invalidScss = fs.readFileSync('./__tests__/standard-scss/invalid.scss', 'utf8');
 
 describe('flags no warnings with valid scss', () => {
 	let result;
@@ -46,9 +46,7 @@ describe('flags warnings with invalid scss', () => {
 
 	it('correct warning text', () => {
 		return result.then((data) =>
-			expect(data.results[0].warnings[0].text).toBe(
-				'Unexpected parentheses in argumentless mixin "something" call (scss/at-mixin-argumentless-call-parentheses)',
-			),
+			expect(data.results[0].warnings[0].text).toBe('Unexpected parentheses in argumentless mixin "something" call (scss/at-mixin-argumentless-call-parentheses)'),
 		);
 	});
 
