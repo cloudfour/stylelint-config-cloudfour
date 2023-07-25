@@ -1,3 +1,9 @@
+# Unreleased
+
+- Updated `stylelint-config-suitcss` to v20
+  - This doesn't require a version change on our part, they're just fixing
+    their stylelint peer dependency to v15, but we already had that.
+
 # 8.0.0 - 2023-07-24
 
 - Updated `stylelint` peer dependency to v15
