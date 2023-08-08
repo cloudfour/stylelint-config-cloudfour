@@ -53,7 +53,7 @@
   "dependencies": {
     "stylelint-config-standard-scss": "^10.0.0",
     "stylelint-config-suitcss": "^20.0.0",
-    "stylelint-high-performance-animation": "1.8.0"
+    "stylelint-high-performance-animation": "1.9.0"
   },
   "devDependencies": {
     "@stylelint/prettier-config": "3.0.0",
