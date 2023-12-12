@@ -51,7 +51,7 @@
     ]
   },
   "dependencies": {
-    "stylelint-config-standard-scss": "^11.0.0",
+    "stylelint-config-standard-scss": "^12.0.0",
     "stylelint-config-suitcss": "^20.0.0",
     "stylelint-high-performance-animation": "1.9.0"
   },
