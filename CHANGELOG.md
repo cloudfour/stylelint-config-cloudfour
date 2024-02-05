@@ -3,6 +3,7 @@
 - Updated `stylelint-config-suitcss` to v21
 - Updated `stylelint-config-standard-scss` to v13
 - Updated `stylelint` peer dependency to v16
+- Disabled `declaration-block-no-redundant-longhand-properties` (#407)
 
 # 9.0.0 - 2023-09-19
 

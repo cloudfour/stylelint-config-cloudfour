@@ -8,6 +8,7 @@ module.exports = {
 		'alpha-value-notation': null, // not ready for this syntax yet
 		'custom-media-pattern': null,
 		'custom-property-pattern': null,
+		'declaration-block-no-redundant-longhand-properties': null, // #407
 		'declaration-empty-line-before': null, // false errors after SCSS comments
 		'keyframes-name-pattern': null,
 		'selector-class-pattern': null,
