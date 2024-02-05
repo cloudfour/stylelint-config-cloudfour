@@ -1,0 +1,6 @@
+.foo {
+  /*comment with no whitespace*/
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: comic sans, serif;
+}
