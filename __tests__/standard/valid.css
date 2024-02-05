@@ -1,0 +1,44 @@
+/* stylelint-disable-next-line at-rule-disallowed-list */
+@import 'foo.css';
+@custom-media --foo (min-width: 30em);
+
+/**
+ * Multi-line comment
+ */
+:root {
+  /* Flush to parent comment */
+  --offset: 0;
+	--brand-red: hsl(5deg 10% 40%);
+}
+
+/* Single-line comment */
+.class-foo:not(a):not(div) {
+	margin: 0;
+	top: calc(100% - 2rem);
+}
+
+/* Flush single line comment */
+@media (width >= 60em) {
+	.id-bar {
+		color: #fff;
+		font-family: Helvetica, 'Arial Black', sans-serif;
+		left: calc(var(--offset) + 50%);
+	}
+
+	/* Flush nested single line comment */
+	a::after {
+		background-image: url('x.svg');
+		content: '→';
+		display: block;
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
