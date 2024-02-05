@@ -17,6 +17,8 @@ module.exports = {
 		'scss/at-mixin-pattern': null,
 		'scss/dollar-variable-pattern': null,
 		'scss/percent-placeholder-pattern': null,
+		// these are being set in stylelint-suitcss, but we don't want them
+		'suitcss/custom-property-no-outside-root': null, // #318
 		// our rules from here on
 		'at-rule-disallowed-list': [
 			['extend', 'import'],

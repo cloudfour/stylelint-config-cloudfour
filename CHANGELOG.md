@@ -4,6 +4,7 @@
 - Updated `stylelint-config-standard-scss` to v13
 - Updated `stylelint` peer dependency to v16
 - Disabled `declaration-block-no-redundant-longhand-properties` (#407)
+- Disabled `suitcss/custom-property-no-outside-root` (#318)
 
 # 9.0.0 - 2023-09-19
 

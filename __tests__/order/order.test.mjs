@@ -60,7 +60,7 @@ describe('stylelint-order', () => {
 		});
 
 		it('flags warnings', () => {
-			assert.equal(result.results[0].warnings.length, 4);
+			assert.equal(result.results[0].warnings.length, 5);
 		});
 
 		it('correct warning text', () => {
@@ -71,6 +71,7 @@ describe('stylelint-order', () => {
 					'Expected blockless @include to come before rule (order/order)',
 					'Expected an empty line before $-variable (scss/dollar-variable-empty-line-before)',
 					'Expected color to come before text-decoration (order/properties-alphabetical-order)',
+					'Expected empty line before custom property (custom-property-empty-line-before)',
 				],
 			);
 		});
@@ -83,6 +84,7 @@ describe('stylelint-order', () => {
 					'order/order',
 					'scss/dollar-variable-empty-line-before',
 					'order/properties-alphabetical-order',
+					'custom-property-empty-line-before',
 				],
 			);
 		});
