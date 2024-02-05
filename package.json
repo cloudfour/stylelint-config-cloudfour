@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "stylelint-config-standard-scss": "^11.0.0",
-    "stylelint-config-suitcss": "^20.0.0",
+    "stylelint-config-suitcss": "^21.0.0",
     "stylelint-high-performance-animation": "1.10.0"
   },
   "devDependencies": {
