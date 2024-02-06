@@ -1,4 +1,4 @@
-# Unreleased
+# 10.0.0 - 2024-02-06
 
 - Updated `stylelint-config-suitcss` to v21
 - Updated `stylelint-config-standard-scss` to v13
