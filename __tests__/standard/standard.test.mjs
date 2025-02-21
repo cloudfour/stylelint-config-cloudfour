@@ -1,3 +1,4 @@
+// eslint-disable-next-line n/no-unsupported-features/node-builtins
 import { beforeEach, describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -102,6 +103,7 @@ describe('styleint-standard', () => {
 	});
 
 	// this test fails because we're adding rules it doesn't know about
+	// eslint-disable-next-line n/no-unsupported-features/node-builtins
 	describe.skip('deprecated rules are excluded', () => {
 		const ruleNames = Object.keys(config.rules);
 
