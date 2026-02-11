@@ -69,8 +69,8 @@ describe('cloudfour test', () => {
 				result.results[0].warnings.map((w) => w.text),
 				[
 					'Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)',
-					'Prefer @use and @forward rather than @import.',
-					'Prefer @use and @forward rather than @import.',
+					'Prefer @use and @forward rather than @import. (at-rule-disallowed-list)',
+					'Prefer @use and @forward rather than @import. (at-rule-disallowed-list)',
 					'Unexpected unknown property "weight" (property-no-unknown)',
 				],
 			);
