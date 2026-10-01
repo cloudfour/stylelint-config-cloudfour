@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = {
+export default {
 	extends: ['stylelint-config-standard-scss', 'stylelint-config-suitcss'],
 	plugins: ['stylelint-high-performance-animation'],
 	rules: {
