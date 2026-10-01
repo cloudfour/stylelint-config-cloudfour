@@ -34,8 +34,8 @@
   },
   "dependencies": {
     "stylelint-config-standard-scss": "13.1.0",
-    "stylelint-config-suitcss": "21.0.0",
-    "stylelint-high-performance-animation": "1.11.0"
+    "stylelint-high-performance-animation": "1.11.0",
+    "stylelint-order": "8.1.1"
   },
   "devDependencies": {
     "@stylelint/prettier-config": "4.0.0",

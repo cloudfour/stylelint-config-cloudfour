@@ -1,6 +1,6 @@
 export default {
-	extends: ['stylelint-config-standard-scss', 'stylelint-config-suitcss'],
-	plugins: ['stylelint-high-performance-animation'],
+	extends: ['stylelint-config-standard-scss'],
+	plugins: ['stylelint-high-performance-animation', 'stylelint-order'],
 	rules: {
 		// these are being set in stylelint-standard, but we don't want them
 		'alpha-value-notation': null, // not ready for this syntax yet
@@ -15,8 +15,6 @@ export default {
 		'scss/at-mixin-pattern': null,
 		'scss/dollar-variable-pattern': null,
 		'scss/percent-placeholder-pattern': null,
-		// these are being set in stylelint-suitcss, but we don't want them
-		'suitcss/custom-property-no-outside-root': null, // #318
 		// our rules from here on
 		'at-rule-disallowed-list': [
 			['extend', 'import'],
@@ -48,6 +46,7 @@ export default {
 			},
 		],
 		// rules from plugins
+		'order/properties-alphabetical-order': true,
 		'order/order': [
 			[
 				'dollar-variables',

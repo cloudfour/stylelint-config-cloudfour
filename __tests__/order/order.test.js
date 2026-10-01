@@ -68,10 +68,10 @@ describe('stylelint-order', () => {
 			assert.deepEqual(
 				result.results[0].warnings.map((w) => w.text),
 				[
+					'Expected color to come before text-decoration (order/properties-alphabetical-order)',
 					'Expected $-variable to come before declaration (order/order)',
 					'Expected blockless @include to come before rule (order/order)',
 					'Expected an empty line before $-variable (scss/dollar-variable-empty-line-before)',
-					'Expected color to come before text-decoration (order/properties-alphabetical-order)',
 					'Expected empty line before custom property (custom-property-empty-line-before)',
 				],
 			);
@@ -81,10 +81,10 @@ describe('stylelint-order', () => {
 			assert.deepEqual(
 				result.results[0].warnings.map((w) => w.rule),
 				[
+					'order/properties-alphabetical-order',
 					'order/order',
 					'order/order',
 					'scss/dollar-variable-empty-line-before',
-					'order/properties-alphabetical-order',
 					'custom-property-empty-line-before',
 				],
 			);
@@ -95,7 +95,7 @@ describe('stylelint-order', () => {
 		});
 
 		it('corrects line number', () => {
-			assert.equal(result.results[0].warnings[0].line, 4);
+			assert.equal(result.results[0].warnings[0].line, 3);
 		});
 
 		it('corrects column number', () => {
