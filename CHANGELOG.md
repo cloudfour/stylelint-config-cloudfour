@@ -1,4 +1,4 @@
-# 11.0.0 - Unreleased
+# 11.0.0 - 2026-10-01
 
 - Removed `stylelint-config-suitcss`, which is no longer maintained and was blocking the upgrade to Stylelint v17 (#636)
   - Alphabetical property order is still enforced, now via `stylelint-order` directly
