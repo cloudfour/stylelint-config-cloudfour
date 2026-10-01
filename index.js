@@ -8,11 +8,13 @@ export default {
 	rules: {
 		// these are being set in stylelint-standard, but we don't want them
 		'alpha-value-notation': null, // not ready for this syntax yet
+		'container-name-pattern': null,
 		'custom-media-pattern': null,
 		'custom-property-pattern': null,
 		'declaration-block-no-redundant-longhand-properties': null, // #407
 		'declaration-empty-line-before': null, // false errors after SCSS comments
 		'keyframes-name-pattern': null,
+		'layer-name-pattern': null,
 		'selector-class-pattern': null,
 		'selector-id-pattern': null,
 		'scss/at-function-pattern': null,

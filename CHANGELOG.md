@@ -5,6 +5,7 @@
   - Removed the `suitcss/root-no-standard-properties` and `suitcss/selector-root-no-composition` rules
   - `length-zero-no-unit` and `value-no-vendor-prefix` now use the `stylelint-config-standard` options, which ignore custom properties and allow `-webkit-box` / `-webkit-inline-box` respectively
 - Added `stylelint-declaration-block-no-ignored-properties`
+- Disabled `container-name-pattern` and `layer-name-pattern`, new in `stylelint-config-standard-scss` v17, to match our other naming pattern rules
 - Updated `stylelint` peer dependency to v17
 - Updated `stylelint-config-standard-scss` to v17
 - Updated `stylelint-high-performance-animation` to v2
