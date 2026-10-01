@@ -1,3 +1,16 @@
+# 11.0.0 - Unreleased
+
+- Removed `stylelint-config-suitcss`, which is no longer maintained and was blocking the upgrade to Stylelint v17 (#636)
+  - Alphabetical property order is still enforced, now via `stylelint-order` directly
+  - Removed the `suitcss/root-no-standard-properties` and `suitcss/selector-root-no-composition` rules
+  - `length-zero-no-unit` and `value-no-vendor-prefix` now use the `stylelint-config-standard` options, which ignore custom properties and allow `-webkit-box` / `-webkit-inline-box` respectively
+- Added `stylelint-declaration-block-no-ignored-properties`
+- Updated `stylelint` peer dependency to v17
+- Updated `stylelint-config-standard-scss` to v17
+- Updated `stylelint-high-performance-animation` to v2
+- Updated minimum Node version to 20.19.0
+- Converted to ESM
+
 # 10.0.0 - 2024-02-06
 
 - Updated `stylelint-config-suitcss` to v21
