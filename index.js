@@ -1,24 +1,26 @@
-'use strict';
-
-module.exports = {
-	extends: ['stylelint-config-standard-scss', 'stylelint-config-suitcss'],
-	plugins: ['stylelint-high-performance-animation'],
+export default {
+	extends: ['stylelint-config-standard-scss'],
+	plugins: [
+		'stylelint-declaration-block-no-ignored-properties',
+		'stylelint-high-performance-animation',
+		'stylelint-order',
+	],
 	rules: {
 		// these are being set in stylelint-standard, but we don't want them
 		'alpha-value-notation': null, // not ready for this syntax yet
+		'container-name-pattern': null,
 		'custom-media-pattern': null,
 		'custom-property-pattern': null,
 		'declaration-block-no-redundant-longhand-properties': null, // #407
 		'declaration-empty-line-before': null, // false errors after SCSS comments
 		'keyframes-name-pattern': null,
+		'layer-name-pattern': null,
 		'selector-class-pattern': null,
 		'selector-id-pattern': null,
 		'scss/at-function-pattern': null,
 		'scss/at-mixin-pattern': null,
 		'scss/dollar-variable-pattern': null,
 		'scss/percent-placeholder-pattern': null,
-		// these are being set in stylelint-suitcss, but we don't want them
-		'suitcss/custom-property-no-outside-root': null, // #318
 		// our rules from here on
 		'at-rule-disallowed-list': [
 			['extend', 'import'],
@@ -50,6 +52,7 @@ module.exports = {
 			},
 		],
 		// rules from plugins
+		'order/properties-alphabetical-order': true,
 		'order/order': [
 			[
 				'dollar-variables',
@@ -68,6 +71,7 @@ module.exports = {
 				'rules',
 			],
 		],
+		'plugin/declaration-block-no-ignored-properties': true,
 		'plugin/no-low-performance-animation-properties': [true, { ignore: 'paint-properties' }],
 		'scss/declaration-nested-properties': 'never',
 		'scss/selector-no-redundant-nesting-selector': true,

@@ -7,10 +7,10 @@ import stylelint from 'stylelint';
 
 import config from '../../index.js';
 
-const validScss = readFileSync('./__tests__/order/valid.scss', 'utf-8');
-const invalidScss = readFileSync('./__tests__/order/invalid.scss', 'utf-8');
+const validScss = readFileSync('./__tests__/cloudfour/valid.scss', 'utf-8');
+const invalidScss = readFileSync('./__tests__/cloudfour/invalid.scss', 'utf-8');
 
-describe('stylelint-order', () => {
+describe('cloudfour test', () => {
 	describe('flags no warnings with valid css', () => {
 		let result;
 
@@ -61,18 +61,17 @@ describe('stylelint-order', () => {
 		});
 
 		it('flags warnings', () => {
-			assert.equal(result.results[0].warnings.length, 5);
+			assert.equal(result.results[0].warnings.length, 4);
 		});
 
 		it('correct warning text', () => {
 			assert.deepEqual(
 				result.results[0].warnings.map((w) => w.text),
 				[
-					'Expected $-variable to come before declaration (order/order)',
-					'Expected blockless @include to come before rule (order/order)',
-					'Expected an empty line before $-variable (scss/dollar-variable-empty-line-before)',
-					'Expected color to come before text-decoration (order/properties-alphabetical-order)',
-					'Expected empty line before custom property (custom-property-empty-line-before)',
+					'Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)',
+					'Prefer @use and @forward rather than @import. (at-rule-disallowed-list)',
+					'Prefer @use and @forward rather than @import. (at-rule-disallowed-list)',
+					'Unknown property "weight" (property-no-unknown)',
 				],
 			);
 		});
@@ -81,11 +80,10 @@ describe('stylelint-order', () => {
 			assert.deepEqual(
 				result.results[0].warnings.map((w) => w.rule),
 				[
-					'order/order',
-					'order/order',
-					'scss/dollar-variable-empty-line-before',
-					'order/properties-alphabetical-order',
-					'custom-property-empty-line-before',
+					'scss/selector-no-redundant-nesting-selector',
+					'at-rule-disallowed-list',
+					'at-rule-disallowed-list',
+					'property-no-unknown',
 				],
 			);
 		});
@@ -95,7 +93,7 @@ describe('stylelint-order', () => {
 		});
 
 		it('corrects line number', () => {
-			assert.equal(result.results[0].warnings[0].line, 4);
+			assert.equal(result.results[0].warnings[0].line, 10);
 		});
 
 		it('corrects column number', () => {

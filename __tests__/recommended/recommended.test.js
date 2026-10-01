@@ -7,10 +7,10 @@ import stylelint from 'stylelint';
 
 import config from '../../index.js';
 
-const validCss = readFileSync('./__tests__/suitcss/valid.css', 'utf-8');
-const invalidCss = readFileSync('./__tests__/suitcss/invalid.css', 'utf-8');
+const validCss = readFileSync('./__tests__/recommended/valid.css', 'utf-8');
+const invalidCss = readFileSync('./__tests__/recommended/invalid.css', 'utf-8');
 
-describe('stylelint-config-suitcss', () => {
+describe('stylelint-recommended', () => {
 	describe('flags no warnings with valid css', () => {
 		let result;
 
@@ -67,12 +67,12 @@ describe('stylelint-config-suitcss', () => {
 		it('corrects warning text', () => {
 			assert.equal(
 				result.results[0].warnings[0].text,
-				'Expected "#ff0000" to be "#f00" (color-hex-length)',
+				'Unknown type selector "madeup" (selector-type-no-unknown)',
 			);
 		});
 
 		it('corrects rule flagged', () => {
-			assert.equal(result.results[0].warnings[0].rule, 'color-hex-length');
+			assert.equal(result.results[0].warnings[0].rule, 'selector-type-no-unknown');
 		});
 
 		it('corrects severity flagged', () => {
@@ -80,25 +80,29 @@ describe('stylelint-config-suitcss', () => {
 		});
 
 		it('corrects line number', () => {
-			assert.equal(result.results[0].warnings[0].line, 2);
+			assert.equal(result.results[0].warnings[0].line, 1);
 		});
 
 		it('corrects column number', () => {
-			assert.equal(result.results[0].warnings[0].column, 10);
+			assert.equal(result.results[0].warnings[0].column, 1);
 		});
 	});
+
+	// this test fails because we're adding rules it doesn't know about
+	// eslint-disable-next-line n/no-unsupported-features/node-builtins
+	describe.skip('deprecated rules are excluded', () => {
+		const ruleNames = Object.keys(config.rules);
+
+		it('is not empty', () => {
+			assert.ok(ruleNames.length > 0);
+		});
+
+		for (const ruleName of ruleNames) {
+			it(`${ruleName}`, async () => {
+				const rule = await stylelint.rules[ruleName];
+
+				assert.ok(!rule.meta.deprecated);
+			});
+		}
+	});
 });
-
-// describe('flags warnings with invalid css', () => {
-// 	it('correct warning text', () => {
-// 		return result.then((data) =>
-// 			expect(data.results[0].warnings[0].text).toBe(
-// 				'Expected "#ff0000" to be "#f00" (color-hex-length)',
-// 			),
-// 		);
-// 	});
-
-// 	it('correct rule flagged', () => {
-// 		return result.then((data) => expect(data.results[0].warnings[0].rule).toBe('color-hex-length'));
-// 	});
-// });

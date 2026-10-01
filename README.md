@@ -4,7 +4,7 @@
 
 > A sharable stylelint config object that enforces [Cloud Four's CSS Standards](https://github.com/cloudfour/guides/tree/main/css)
 
-Note that this config mostly just extends the [SUIT config](https://github.com/suitcss/stylelint-config-suitcss), and any additions or changes from the SUIT standard should be well-documented here to explain the deviation.
+Note that this config mostly just extends [stylelint-config-standard-scss](https://github.com/stylelint-scss/stylelint-config-standard-scss), and any additions or changes from that standard should be well-documented here to explain the deviation.
 
 ## Installation
 
@@ -88,28 +88,28 @@ For example, to change the `at-rule-no-unknown` rule to use its `ignoreAtRules` 
 
 ## Documentation
 
-### What's the difference between [stylelint-config-cloudfour-suit](https://github.com/cloudfour/stylelint-config-cloudfour-suit) and [stylelint-config-cloudfour](https://github.com/cloudfour/stylelint-config-cloudfour)?
+### Does this config enforce a naming convention?
 
-[stylelint-config-cloudfour](https://github.com/cloudfour/stylelint-config-cloudfour) only contains the CSS formatting rules. [stylelint-config-cloudfour-suit](https://github.com/cloudfour/stylelint-config-cloudfour-suit) extends it, and additionally enforces the [SUIT naming convention](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md). In most cases, you should use [stylelint-config-cloudfour-suit](https://github.com/cloudfour/stylelint-config-cloudfour-suit), but if your project doesn't follow the SUIT naming scheme, then you can use [stylelint-config-cloudfour](https://github.com/cloudfour/stylelint-config-cloudfour) directly.
+No. This config disables the kebab-case naming patterns from `stylelint-config-standard-scss` for classes, IDs, custom properties, custom media, keyframes, cascade layers, containers, and Sass mixins, functions, variables, and placeholders, so that it works with naming conventions like [SUIT CSS](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md). If you want to enforce a convention, add the pattern rules or a plugin like [stylelint-selector-bem-pattern](https://github.com/simonsmith/stylelint-selector-bem-pattern) to your own config.
 
 ### Extends
 
-- [stylelint-config-suitcss](https://github.com/suitcss/stylelint-config-suitcss): Configuration rules to ensure your CSS code is compliant with [SUIT CSS's code style](https://github.com/suitcss/suit/blob/master/doc/STYLE.md).
 - [stylelint-config-standard-scss](https://github.com/stylelint-scss/stylelint-config-standard-scss): The standard shareable SCSS config for Stylelint.
 
 ### Plugins
 
+- [stylelint-declaration-block-no-ignored-properties](https://github.com/kristerkari/stylelint-declaration-block-no-ignored-properties): Disallow property values that are ignored due to another property value in the same rule.
 - [stylelint-high-performance-animation](https://github.com/kristerkari/stylelint-high-performance-animation): Prevent the use of low performance animation and transition properties.
+- [stylelint-order](https://github.com/hudochenkov/stylelint-order): Enforce the order of content within declaration blocks.
 
 ### Configured Lints
 
-This is a list of the lints turned on in this configuration (beyond the ones that come from `stylelint-config-suitcss` & `stylelint-config-standard-scss`), and what they do.
+This is a list of the lints turned on in this configuration (beyond the ones that come from `stylelint-config-standard-scss`), and what they do.
 
 - [`at-rule-empty-line-before`](https://github.com/stylelint/stylelint/blob/master/lib/rules/at-rule-empty-line-before/README.md): Require an empty line before at-rules. _disabled temporarily, pending [#2480](https://github.com/stylelint/stylelint/issues/2480)_
-- [`comment-empty-line-before`](https://github.com/stylelint/stylelint/tree/master/lib/rules/comment-empty-line-before): Require an empty line before comments. _overriding SUIT rule to exclude the first nested comment in a block._
-- [`max-line-length`](https://github.com/stylelint/stylelint/blob/master/lib/rules/max-line-length/): Limit line lengths to 80 characters for comments only. _overriding SUIT rule to ignore comments that contain URLs._
+- [`comment-empty-line-before`](https://github.com/stylelint/stylelint/tree/master/lib/rules/comment-empty-line-before): Require an empty line before comments. _overriding the standard rule to exclude the first nested comment in a block._
 - [`no-descending-specificity`](https://stylelint.io/user-guide/rules/list/no-descending-specificity/): Disallow selectors of lower specificity from coming after overriding selectors of higher specificity. _disabled due to false positives in SCSS contexts._
-- [`rule-empty-line-before`](https://github.com/stylelint/stylelint/blob/master/lib/rules/rule-empty-line-before/): Require an empty line before multi-line rules. _overriding SUIT rule to exclude the first multi-line rule in a block, and to ignore rules following comments._
+- [`rule-empty-line-before`](https://github.com/stylelint/stylelint/blob/master/lib/rules/rule-empty-line-before/): Require an empty line before multi-line rules. _overriding the standard rule to exclude the first multi-line rule in a block, and to ignore rules following comments._
 
 #### Order
 
@@ -124,6 +124,7 @@ This is a list of the lints turned on in this configuration (beyond the ones tha
 
 #### Performance
 
+- [`plugin/declaration-block-no-ignored-properties`](https://github.com/kristerkari/stylelint-declaration-block-no-ignored-properties): Disallow property values that are ignored due to another property value in the same rule, such as `width` with `display: inline`.
 - [`plugin/no-low-performance-animation-properties`](https://github.com/kristerkari/stylelint-high-performance-animation): Prevent the use of low performance animation and transition properties that trigger `layout`.
 
 ## [Changelog](CHANGELOG.md)

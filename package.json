@@ -10,6 +10,7 @@
   "repository": "cloudfour/stylelint-config-cloudfour",
   "license": "MIT",
   "author": "Cloud Four",
+  "type": "module",
   "main": "index.js",
   "files": [
     "index.js"
@@ -32,9 +33,10 @@
     ]
   },
   "dependencies": {
-    "stylelint-config-standard-scss": "13.1.0",
-    "stylelint-config-suitcss": "21.0.0",
-    "stylelint-high-performance-animation": "1.11.0"
+    "stylelint-config-standard-scss": "17.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "3.0.0",
+    "stylelint-high-performance-animation": "2.0.0",
+    "stylelint-order": "8.1.1"
   },
   "devDependencies": {
     "@stylelint/prettier-config": "4.0.0",
@@ -45,12 +47,12 @@
     "postcss": "8.5.28",
     "prettier": "3.9.9",
     "remark-cli": "12.0.1",
-    "stylelint": "16.26.1"
+    "stylelint": "17.16.0"
   },
   "peerDependencies": {
-    "stylelint": "^16.0.0"
+    "stylelint": "^17.0.0"
   },
   "engines": {
-    "node": ">=18.12.0"
+    "node": ">=20.19.0"
   }
 }

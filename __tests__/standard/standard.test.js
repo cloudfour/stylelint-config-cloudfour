@@ -60,13 +60,14 @@ describe('styleint-standard', () => {
 		});
 
 		it('flags warnings', () => {
-			assert.equal(result.results[0].warnings.length, 5);
+			assert.equal(result.results[0].warnings.length, 6);
 		});
 
 		it('correct warning text', () => {
 			assert.deepEqual(
 				result.results[0].warnings.map((w) => w.text),
 				[
+					'Expected "rgba" to be "rgb" (color-function-alias-notation)',
 					'Expected modern color-function notation (color-function-notation)',
 					'Expected "#ffffff" to be "#fff" (color-hex-length)',
 					'Expected whitespace after "/*" (comment-whitespace-inside)',
@@ -80,6 +81,7 @@ describe('styleint-standard', () => {
 			assert.deepEqual(
 				result.results[0].warnings.map((w) => w.rule),
 				[
+					'color-function-alias-notation',
 					'color-function-notation',
 					'color-hex-length',
 					'comment-whitespace-inside',
