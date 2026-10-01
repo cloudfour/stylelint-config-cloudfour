@@ -109,7 +109,7 @@ $global-variable: first global value;
   }
 }
 
-@media (orientation: portrait), projection and (color) {
+@media (orientation: portrait), screen and (color) {
   // Flush to parent double-slash comment
   .selector-i + .selector-ii {
     @include triangle(5px, black, right);

@@ -4,7 +4,7 @@
 .selector-1,
 .selector-2,
 .selector-3[type='text'] {
-	background: linear-gradient(#fff, rgba(0 0 0 / 80%));
+	background: linear-gradient(#fff, rgb(0 0 0 / 80%));
 	box-sizing: border-box;
 	color: #333;
 	display: block;

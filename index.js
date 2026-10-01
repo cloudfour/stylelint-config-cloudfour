@@ -1,6 +1,10 @@
 export default {
 	extends: ['stylelint-config-standard-scss'],
-	plugins: ['stylelint-high-performance-animation', 'stylelint-order'],
+	plugins: [
+		'stylelint-declaration-block-no-ignored-properties',
+		'stylelint-high-performance-animation',
+		'stylelint-order',
+	],
 	rules: {
 		// these are being set in stylelint-standard, but we don't want them
 		'alpha-value-notation': null, // not ready for this syntax yet
@@ -65,6 +69,7 @@ export default {
 				'rules',
 			],
 		],
+		'plugin/declaration-block-no-ignored-properties': true,
 		'plugin/no-low-performance-animation-properties': [true, { ignore: 'paint-properties' }],
 		'scss/declaration-nested-properties': 'never',
 		'scss/selector-no-redundant-nesting-selector': true,

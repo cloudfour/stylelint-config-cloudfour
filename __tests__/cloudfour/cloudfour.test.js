@@ -71,7 +71,7 @@ describe('cloudfour test', () => {
 					'Unnecessary nesting selector (&) (scss/selector-no-redundant-nesting-selector)',
 					'Prefer @use and @forward rather than @import. (at-rule-disallowed-list)',
 					'Prefer @use and @forward rather than @import. (at-rule-disallowed-list)',
-					'Unexpected unknown property "weight" (property-no-unknown)',
+					'Unknown property "weight" (property-no-unknown)',
 				],
 			);
 		});
