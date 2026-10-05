@@ -5,6 +5,7 @@
   - `at-rule-disallowed-list` (`@extend` and `@import`) now only applies to `.scss` files
   - Added a `stylelint-config-cloudfour/scss` entry point, for applying the Sass rules to other file types, such as Vue components with `<style lang="scss">`
   - Migrating CSS projects: remove any `scss/*` or `at-rule-disallowed-list` overrides, and move `ignoreAtRules` options from `scss/at-rule-no-unknown` to `at-rule-no-unknown`
+  - Migrating Vue projects that use `<style lang="scss">`: Sass blocks now get the CSS rules by default, which report Sass at-rules like `@use` as unknown. Apply `stylelint-config-cloudfour/scss` to `.vue` files, as described in the README
   - Migrating PostCSS plugin projects: custom syntax like `svg-load()` or `@define-mixin` may now be flagged by `declaration-property-value-no-unknown` or `at-rule-prelude-no-invalid`, and need ignore options
 - Disabled the `stylelint-scss` formatting rules that conflict with Prettier, such as `scss/operator-no-newline-after` (#638)
 - Added `stylelint-config-standard` as a direct dependency
