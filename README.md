@@ -44,9 +44,9 @@ Sass rules and the [SCSS parser](https://github.com/postcss/postcss-scss) only a
 
 #### Sass in other file types
 
-Stylelint chooses a config for each file, not for each `<style>` block. By default, a Vue component's `<style lang="scss">` block is parsed correctly, but doesn't get the Sass rules.
+Stylelint chooses a config for each file, not for each `<style>` block. Since this config picks the Sass rules by file extension, files that embed styles, such as Vue components, get the CSS rules for every `<style>` block, including `<style lang="scss">` blocks. That works well if your components only use CSS. But if they use Sass, the CSS rules will report Sass features as errors (such as `@use`, `@include`, and `@mixin`, which are unknown at-rules in CSS), and the Sass rules won't run.
 
-If your Vue components mostly use Sass, you can apply the Sass config to them with `stylelint-config-cloudfour/scss`:
+If your components use Sass, you can apply the Sass config to them with `stylelint-config-cloudfour/scss`:
 
 ```js
 {
@@ -61,11 +61,22 @@ If your Vue components mostly use Sass, you can apply the Sass config to them wi
 }
 ```
 
-This gives `lang="scss"` blocks the Sass rules, but plain `<style>` blocks in those files lose the CSS validity rules that don't work with Sass.
+Now every `<style>` block in your components is linted with the Sass rules, including plain `<style>` blocks. That won't cause false errors, since Sass is a superset of CSS. However, the CSS rules that `stylelint-config-standard-scss` turns off because they misreport Sass syntax won't run on any block. So your plain CSS won't be checked for these:
+
+- [`annotation-no-unknown`](https://stylelint.io/user-guide/rules/annotation-no-unknown/)
+- [`at-rule-descriptor-no-unknown`](https://stylelint.io/user-guide/rules/at-rule-descriptor-no-unknown/)
+- [`at-rule-descriptor-value-no-unknown`](https://stylelint.io/user-guide/rules/at-rule-descriptor-value-no-unknown/)
+- [`at-rule-prelude-no-invalid`](https://stylelint.io/user-guide/rules/at-rule-prelude-no-invalid/)
+- [`declaration-property-value-no-unknown`](https://stylelint.io/user-guide/rules/declaration-property-value-no-unknown/)
+- [`media-feature-name-value-no-unknown`](https://stylelint.io/user-guide/rules/media-feature-name-value-no-unknown/)
+- [`media-query-no-invalid`](https://stylelint.io/user-guide/rules/media-query-no-invalid/)
+- [`no-duplicate-selectors`](https://stylelint.io/user-guide/rules/no-duplicate-selectors/)
 
 ### Using with Prettier
 
-This config works with [Prettier](https://prettier.io/) without any extra setup. Stylelint [removed its formatting rules](https://stylelint.io/migration-guide/to-16#removed-deprecated-stylistic-rules) in v16, so [`stylelint-config-prettier`](https://github.com/prettier/stylelint-config-prettier) is no longer needed. This config also turns off the formatting rules that `stylelint-config-standard-scss` still enables, since Prettier handles them.
+We recommend using [Prettier](https://prettier.io/) to format your CSS and Sass, and this config works with it without any extra setup.
+
+As of v16, Stylelint [removed its formatting rules](https://stylelint.io/migration-guide/to-16#removed-deprecated-stylistic-rules), leaving formatting to dedicated tools like Prettier. That's why [`stylelint-config-prettier`](https://github.com/prettier/stylelint-config-prettier), which used to turn those rules off, is no longer needed. However, [`stylelint-config-standard-scss`](https://github.com/stylelint-scss/stylelint-config-standard-scss) still turns on formatting rules from [`stylelint-scss`](https://github.com/stylelint-scss/stylelint-scss), such as `scss/operator-no-newline-after`. Some of them conflict with how Prettier formats Sass. To match the intent of Stylelint's decision, this config turns those formatting rules off.
 
 ### Extending the config
 
