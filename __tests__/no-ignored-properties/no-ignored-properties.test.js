@@ -69,7 +69,7 @@ describe('stylelint-declaration-block-no-ignored-properties', () => {
 		it('corrects warning text', () => {
 			assert.equal(
 				result.results[0].warnings[0].text,
-				'Unexpected "width" with "display: inline" (plugin/declaration-block-no-ignored-properties)',
+				'Unexpected "inline-size" with "display: inline" (plugin/declaration-block-no-ignored-properties)',
 			);
 		});
 

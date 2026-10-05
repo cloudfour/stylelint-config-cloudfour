@@ -5,6 +5,15 @@ export default {
 		'stylelint-high-performance-animation',
 		'stylelint-order',
 	],
+	// Lets the logical property rules autofix: a physical side like `left` only
+	// maps to a logical side once the writing direction is known. Projects with
+	// other writing directions can override this.
+	languageOptions: {
+		directionality: {
+			block: 'top-to-bottom',
+			inline: 'left-to-right',
+		},
+	},
 	rules: {
 		// these are being set in stylelint-standard, but we don't want them
 		'alpha-value-notation': null, // not ready for this syntax yet
@@ -27,6 +36,14 @@ export default {
 		],
 		'import-notation': 'string',
 		'no-descending-specificity': null,
+		// Prefer logical properties, units, and keywords (#214)
+		'property-layout-mappings': [
+			'flow-relative',
+			{
+				// overflow-inline and overflow-block need Safari 26 (#662)
+				ignoreProperties: ['overflow-x', 'overflow-y'],
+			},
+		],
 		'rule-empty-line-before': [
 			'always-multi-line',
 			{
@@ -35,10 +52,18 @@ export default {
 			},
 		],
 		'selector-not-notation': 'simple', // @see https://github.com/cloudfour/cloudfour.com-patterns/pull/1992#issuecomment-1201454396
+		'unit-layout-mappings': 'flow-relative',
 		'value-keyword-case': [
 			'lower',
 			{
 				camelCaseSvgKeywords: true,
+			},
+		],
+		'value-keyword-layout-mappings': [
+			'flow-relative',
+			{
+				// browsers don't support logical keywords in these yet (#663)
+				ignoreProperties: ['offset-anchor', 'offset-position'],
 			},
 		],
 		// rules from plugins

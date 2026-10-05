@@ -1,4 +1,4 @@
 .inline-block {
   display: inline-block;
-  width: 100px;
+  inline-size: 100px;
 }
