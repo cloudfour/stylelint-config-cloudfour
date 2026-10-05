@@ -21,3 +21,19 @@ a {
   @include mixin;
   color: red;
 }
+
+// Since Sass 1.92, an @include's position decides which styles win, so
+// includes may come after declarations or nested rules (#528).
+.bar {
+  color: red;
+  @include mixin;
+
+  .nested {
+    color: blue;
+  }
+
+  @include block {
+    color: red;
+  }
+  @include mixin;
+}

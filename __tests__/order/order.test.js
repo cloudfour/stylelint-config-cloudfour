@@ -72,7 +72,7 @@ describe('stylelint-order', () => {
 				[
 					'Expected color to come before text-decoration (order/properties-alphabetical-order)',
 					'Expected $-variable to come before declaration (order/order)',
-					'Expected blockless @include to come before rule (order/order)',
+					'Expected declaration to come before rule (order/order)',
 					'Expected an empty line before $-variable (scss/dollar-variable-empty-line-before)',
 					'Expected empty line before custom property (custom-property-empty-line-before)',
 				],

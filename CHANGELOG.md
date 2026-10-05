@@ -5,6 +5,7 @@
   - `at-rule-disallowed-list` (`@extend` and `@import`) now only applies to `.scss` files
   - Added a `stylelint-config-cloudfour/scss` entry point, for applying the Sass rules to other file types, such as Vue components with `<style lang="scss">`
 - Disabled the `stylelint-scss` formatting rules that conflict with Prettier, such as `scss/operator-no-newline-after` (#638)
+- `order/order` no longer sets the position of `@include`, because since Dart Sass 1.92, an `@include`'s position decides which styles win. Variables and custom properties still come first, and declarations still come before nested rules (#528)
 - Added `stylelint-config-standard` as a direct dependency
 
 ## Migrating from v11
@@ -46,7 +47,25 @@ rules: {
 
 ### Projects that lint Sass files
 
-No changes are required. Sass files get the same rules as before, except for the `stylelint-scss` formatting rules that conflict with Prettier. If you turned any of those off in your own config, you can remove those overrides:
+No config changes are required, but there are two differences to be aware of.
+
+`@include` can now go anywhere in a rule, and `stylelint --fix` no longer moves it. Since Dart Sass 1.92, Sass outputs a mixin's styles where the `@include` is written, so its position decides which styles win:
+
+```scss
+.title {
+  @include type.fluid; // the mixin's font sizes, including its media queries...
+  font-size: 2rem; // ...are overridden by this
+}
+
+.title {
+  font-size: 2rem; // this is overridden by...
+  @include type.fluid; // ...the mixin's font sizes
+}
+```
+
+Previous versions of this config required the first form, and `--fix` would move an `@include` above your declarations. If your project uses Sass 1.92 or later, that may have changed your compiled CSS. It's worth checking any `@include` whose mixin outputs declarations you also set yourself.
+
+The `stylelint-scss` formatting rules that conflict with Prettier are now turned off. If you turned any of those off in your own config, you can remove those overrides:
 
 - `scss/at-else-closing-brace-newline-after`
 - `scss/at-else-closing-brace-space-after`
