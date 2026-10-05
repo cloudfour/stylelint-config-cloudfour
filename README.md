@@ -1,6 +1,6 @@
 # stylelint-config-cloudfour
 
-[![NPM version](http://img.shields.io/npm/v/stylelint-config-cloudfour.svg)](https://www.npmjs.org/package/stylelint-config-cloudfour) [![Build Status](https://github.com/cloudfour/stylelint-config-cloudfour/workflows/CI/badge.svg)](https://github.com/cloudfour/stylelint-config-cloudfour/actions?query=workflow%3ACI) [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
+[![NPM version](https://img.shields.io/npm/v/stylelint-config-cloudfour.svg)](https://www.npmjs.com/package/stylelint-config-cloudfour) [![Build Status](https://github.com/cloudfour/stylelint-config-cloudfour/workflows/CI/badge.svg)](https://github.com/cloudfour/stylelint-config-cloudfour/actions?query=workflow%3ACI) [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
 
 > A sharable stylelint config object that enforces [Cloud Four's CSS Standards](https://github.com/cloudfour/guides/tree/main/css)
 
@@ -86,24 +86,38 @@ As of v16, Stylelint [removed its formatting rules](https://stylelint.io/migrati
 
 ### Extending the config
 
-Simply add a `"rules"` key to your config, then add your overrides and additions there.
+To change or add rules, add a `rules` key to your config. Your rules take precedence over this config's.
 
-For example, to change the `at-rule-no-unknown` rule to use its `ignoreAtRules` option, change the `indentation` to tabs, turn off the `number-leading-zero` rule,and add the `unit-whitelist` rule:
+For example, to teach `at-rule-no-unknown` about an at-rule from a PostCSS plugin, turn off `selector-not-notation`, and allow only certain units with `unit-allowed-list`:
 
 ```js
 {
-  "extends": "stylelint-config-cloudfour",
-  "rules": {
-    "at-rule-no-unknown": [ true, {
-      "ignoreAtRules": [
-        "extends",
-        "ignores"
-      ]
-    }],
-    "indentation": "tab",
-    "number-leading-zero": null,
-    "unit-whitelist": ["em", "rem", "s"]
-  }
+  extends: ["stylelint-config-cloudfour"],
+  rules: {
+    "at-rule-no-unknown": [true, { ignoreAtRules: ["define-mixin"] }],
+    "selector-not-notation": null,
+    "unit-allowed-list": ["em", "rem", "%", "s"],
+  },
+}
+```
+
+#### Changing rules for one file type
+
+Rules in your `rules` key apply to every file, including `.scss` files. That matters for rules that this config only turns off for Sass. For example, `at-rule-no-unknown` is off for `.scss` files because it reports Sass at-rules like `@use` and `@include` as unknown, and setting it in your `rules` turns it back on for them.
+
+If your project lints both CSS and Sass, use `overrides` to change a rule for one file type only:
+
+```js
+{
+  extends: ["stylelint-config-cloudfour"],
+  overrides: [
+    {
+      files: ["**/*.css"],
+      rules: {
+        "at-rule-no-unknown": [true, { ignoreAtRules: ["define-mixin"] }],
+      },
+    },
+  ],
 }
 ```
 
@@ -179,11 +193,11 @@ rules: {
 
 This is a list of the lints turned on in this configuration (beyond the ones that come from `stylelint-config-standard` and `stylelint-config-standard-scss`), and what they do.
 
-- [`at-rule-empty-line-before`](https://github.com/stylelint/stylelint/blob/master/lib/rules/at-rule-empty-line-before/README.md): Require an empty line before at-rules. _disabled temporarily, pending [#2480](https://github.com/stylelint/stylelint/issues/2480)_
-- [`comment-empty-line-before`](https://github.com/stylelint/stylelint/tree/master/lib/rules/comment-empty-line-before): Require an empty line before comments. _overriding the standard rule to exclude the first nested comment in a block._
+- [`at-rule-empty-line-before`](https://stylelint.io/user-guide/rules/at-rule-empty-line-before/): Require an empty line before at-rules. _disabled, because it requires an empty line before blockless at-rules like `@include`, which looks awkward among declarations ([#7](https://github.com/cloudfour/stylelint-config-cloudfour/issues/7)). The option that would allow this [won't be added](https://github.com/stylelint/stylelint/issues/2480), since Stylelint no longer adds features to formatting rules._
+- [`comment-empty-line-before`](https://stylelint.io/user-guide/rules/comment-empty-line-before/): Require an empty line before comments. _overriding the standard rule to exclude the first nested comment in a block._
 - [`import-notation`](https://stylelint.io/user-guide/rules/import-notation/): Require `@import` paths to be strings, such as `@import 'foo.css'`, rather than `url()`. _overriding the standard rule to match the Sass convention._
-- [`no-descending-specificity`](https://stylelint.io/user-guide/rules/list/no-descending-specificity/): Disallow selectors of lower specificity from coming after overriding selectors of higher specificity. _disabled due to false positives in SCSS contexts._
-- [`rule-empty-line-before`](https://github.com/stylelint/stylelint/blob/master/lib/rules/rule-empty-line-before/): Require an empty line before multi-line rules. _overriding the standard rule to exclude the first multi-line rule in a block, and to ignore rules following comments._
+- [`no-descending-specificity`](https://stylelint.io/user-guide/rules/no-descending-specificity/): Disallow selectors of lower specificity from coming after overriding selectors of higher specificity. _disabled due to false positives in SCSS contexts._
+- [`rule-empty-line-before`](https://stylelint.io/user-guide/rules/rule-empty-line-before/): Require an empty line before multi-line rules. _overriding the standard rule to exclude the first multi-line rule in a block, and to ignore rules following comments._
 
 #### Logical properties
 
@@ -200,9 +214,9 @@ This is a list of the lints turned on in this configuration (beyond the ones tha
 
 These only apply to `.scss` files. The Sass formatting rules from `stylelint-config-standard-scss`, such as `scss/operator-no-newline-after`, are turned off, since [Prettier](#using-with-prettier) handles formatting.
 
-- [`at-rule-disallowed-list`](https://github.com/stylelint/stylelint/blob/main/lib/rules/at-rule-disallowed-list/README.md): Disallow use of `@extend` because it's [considered an anti-pattern](https://csswizardry.com/2016/02/mixins-better-for-performance/), and `@import` because it's [deprecated](https://sass-lang.com/documentation/at-rules/import)
-- [`scss/declaration-nested-properties`](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/declaration-nested-properties/README.md): Disallow SCSS nested property groups, such as `font { size: 16px; weight: 700; }`.
-- [`scss/selector-no-redundant-nesting-selector`](https://github.com/kristerkari/stylelint-scss/blob/master/src/rules/selector-no-redundant-nesting-selector/README.md): Disallow redundant nesting selectors (`&`).
+- [`at-rule-disallowed-list`](https://stylelint.io/user-guide/rules/at-rule-disallowed-list/): Disallow use of `@extend` because it's [considered an anti-pattern](https://csswizardry.com/2016/02/mixins-better-for-performance/), and `@import` because it's [deprecated](https://sass-lang.com/documentation/at-rules/import)
+- [`scss/declaration-nested-properties`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/declaration-nested-properties/README.md): Disallow SCSS nested property groups, such as `font { size: 16px; weight: 700; }`.
+- [`scss/selector-no-redundant-nesting-selector`](https://github.com/stylelint-scss/stylelint-scss/blob/master/src/rules/selector-no-redundant-nesting-selector/README.md): Disallow redundant nesting selectors (`&`).
 
 #### Performance
 

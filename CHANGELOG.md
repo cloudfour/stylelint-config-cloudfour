@@ -10,6 +10,7 @@
   - Set `languageOptions.directionality` to left-to-right, top-to-bottom, so `stylelint --fix` can convert physical properties
   - `overflow-x` and `overflow-y` (#662), and physical keywords in `offset-anchor` and `offset-position` (#663), are still allowed, since browsers don't fully support their logical versions yet
 - Added `stylelint-config-standard` as a direct dependency
+- Updated the README's examples and links, which used rules removed in earlier Stylelint versions (#661)
 
 ## Migrating from v11
 
@@ -50,6 +51,8 @@ The Sass rules no longer run on `.css` files, so you can remove any overrides yo
   // After
   "at-rule-no-unknown": [true, { ignoreAtRules: ["define-mixin"] }],
   ```
+
+  If your project also lints `.scss` files, set `at-rule-no-unknown` in an `overrides` entry for `.css` files instead. Setting it in your `rules` turns it back on for Sass files, where it reports `@use` and `@include` as unknown. See "Changing rules for one file type" in the README.
 
 ### Projects that use PostCSS plugins
 
