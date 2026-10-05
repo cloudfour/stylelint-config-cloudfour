@@ -7,6 +7,7 @@
 - Disabled the `stylelint-scss` formatting rules that conflict with Prettier, such as `scss/operator-no-newline-after` (#638)
 - `order/order` no longer sets the position of `@include`, because since Dart Sass 1.92, an `@include`'s position decides which styles win. Variables and custom properties still come first, and declarations still come before nested rules (#528)
 - Added `stylelint-config-standard` as a direct dependency
+- Updated the README's examples and links, which used rules removed in earlier Stylelint versions (#661)
 
 ## Migrating from v11
 
@@ -27,6 +28,8 @@ The Sass rules no longer run on `.css` files, so you can remove any overrides yo
   // After
   "at-rule-no-unknown": [true, { ignoreAtRules: ["define-mixin"] }],
   ```
+
+  If your project also lints `.scss` files, set `at-rule-no-unknown` in an `overrides` entry for `.css` files instead. Setting it in your `rules` turns it back on for Sass files, where it reports `@use` and `@include` as unknown. See "Changing rules for one file type" in the README.
 
 ### Projects that use PostCSS plugins
 
