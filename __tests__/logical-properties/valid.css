@@ -1,0 +1,14 @@
+.foo {
+  float: inline-start;
+  inline-size: calc(100vi - 2rem);
+  inset-block-start: 0;
+  margin-inline-start: 1rem;
+  text-align: end;
+}
+
+/* Exceptions: browsers don't support the logical versions yet */
+.bar {
+  offset-position: left top;
+  overflow-x: auto;
+  overflow-y: hidden;
+}

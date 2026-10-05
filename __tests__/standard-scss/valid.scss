@@ -41,13 +41,13 @@
   border-width: math.div($size, 2);
 
   @if $direction == up {
-    border-bottom-color: $color;
+    border-block-end-color: $color;
   } @else if $direction == right {
-    border-left-color: $color;
+    border-inline-start-color: $color;
   } @else if $direction == down {
-    border-top-color: $color;
+    border-block-start-color: $color;
   } @else if $direction == left {
-    border-right-color: $color;
+    border-inline-end-color: $color;
   } @else {
     @error "Unknown direction #{$direction}.";
   }
@@ -87,16 +87,16 @@ $theme-colors: (
 .selector-3[type="text"] {
   background: linear-gradient(#fff, rgb(0 0 0 / 80%));
   color: base.$primary-color;
-  top: calc(100% - 2rem) !important;
+  inset-block-start: calc(100% - 2rem) !important;
 
   a {
-    width: math.div(300px, 960px) * 100%;
+    inline-size: math.div(300px, 960px) * 100%;
   }
 }
 
-.selector-x { width: 10%; }
-.selector-y { width: 20%; }
-.selector-z { width: 30%; }
+.selector-x { inline-size: 10%; }
+.selector-y { inline-size: 20%; }
+.selector-z { inline-size: 30%; }
 
 .selector-a {
   @include theme;
@@ -144,7 +144,7 @@ $theme-colors: (
         #fff 25px,
         rgb(255 255 255 / 100%) 50px
       );
-    height: 10rem;
+    block-size: 10rem;
   }
 
   /* Flush nested single line comment */

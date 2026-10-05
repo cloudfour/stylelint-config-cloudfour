@@ -9,7 +9,7 @@
 }
 
 .foo {
-  width: calc(
+  inline-size: calc(
     var(--a) +
       var(--b)
   );

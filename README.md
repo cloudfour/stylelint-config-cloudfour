@@ -115,55 +115,54 @@ No. This config disables the kebab-case naming patterns from `stylelint-config-s
 
 ### Does this config enforce logical properties?
 
-No. [Logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values), such as `margin-inline-start` instead of `margin-left`, adapt to the page's writing direction, which matters for sites that support right-to-left or vertical languages. However, most existing projects use physical properties like `width` and `height` throughout, so turning this on by default would flag hundreds or thousands of lines in a typical project.
+Yes. [Logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values), such as `margin-inline-start` instead of `margin-left`, describe layout relative to the text direction instead of the screen. This config flags physical properties, units, and keywords, and `stylelint --fix` converts them for you:
 
-If you want to enforce logical properties, Stylelint has three built-in rules for it. Add them to your own config:
+| Physical                                     | Logical                                                           |
+| -------------------------------------------- | ----------------------------------------------------------------- |
+| `margin-left`, `padding-top`, `border-right` | `margin-inline-start`, `padding-block-start`, `border-inline-end` |
+| `top`, `left`                                | `inset-block-start`, `inset-inline-start`                         |
+| `width`, `max-height`                        | `inline-size`, `max-block-size`                                   |
+| `100vw`, `50dvh`                             | `100vi`, `50dvb`                                                  |
+| `float: left`, `text-align: right`           | `float: inline-start`, `text-align: end`                          |
+
+Two exceptions are allowed, because browsers don't fully support their logical versions yet:
+
+- `overflow-x` and `overflow-y`: `overflow-inline` and `overflow-block` need Safari 26 or later ([#662](https://github.com/cloudfour/stylelint-config-cloudfour/issues/662)).
+- Physical keywords in `offset-anchor` and `offset-position`, such as `left top`: no browser supports the logical keywords yet ([#663](https://github.com/cloudfour/stylelint-config-cloudfour/issues/663)).
+
+Shorthand properties with physical sides, such as `margin: 0 1rem 0 2rem`, aren't flagged yet ([stylelint/stylelint#9420](https://github.com/stylelint/stylelint/issues/9420)).
+
+#### Writing direction
+
+Stylelint can only convert physical properties if it knows the page's writing direction, because a physical side like `left` maps to a different logical side in each direction. This config assumes a left-to-right, top-to-bottom language like English. If your project uses another writing direction, such as right-to-left for Arabic or Hebrew, override it in your config:
 
 ```js
 {
   extends: ["stylelint-config-cloudfour"],
-  rules: {
-    "property-layout-mappings": "flow-relative",
-    "unit-layout-mappings": "flow-relative",
-    "value-keyword-layout-mappings": "flow-relative",
-  },
-}
-```
-
-- [`property-layout-mappings`](https://stylelint.io/user-guide/rules/property-layout-mappings/) flags physical properties, such as `margin-left`, `top`, and `width`.
-- [`unit-layout-mappings`](https://stylelint.io/user-guide/rules/unit-layout-mappings/) flags physical units, such as `vw` and `vh`.
-- [`value-keyword-layout-mappings`](https://stylelint.io/user-guide/rules/value-keyword-layout-mappings/) flags physical keywords, such as `float: left` and `text-align: right`.
-
-Shorthand properties with physical sides, such as `margin: 0 1rem 0 2rem`, aren't flagged yet ([stylelint/stylelint#9420](https://github.com/stylelint/stylelint/issues/9420)).
-
-#### Adopting logical properties gradually
-
-Most of the warnings in an existing project come from `width`, `height`, `vw`, and `vh`. To start with everything else, ignore those for now:
-
-```js
-rules: {
-  "property-layout-mappings": ["flow-relative", { ignoreProperties: ["width", "height"] }],
-  "unit-layout-mappings": ["flow-relative", { ignoreUnits: ["vw", "vh"] }],
-  "value-keyword-layout-mappings": "flow-relative",
-}
-```
-
-#### Fixing automatically
-
-These rules can only fix problems automatically if Stylelint knows your page's writing direction, because a physical side like `left` maps to a different logical side in each direction. For a left-to-right, top-to-bottom language like English, add this to your config:
-
-```js
-{
   languageOptions: {
     directionality: {
       block: "top-to-bottom",
-      inline: "left-to-right",
+      inline: "right-to-left",
     },
   },
 }
 ```
 
-Then `stylelint --fix` will convert, for example, `margin-left` to `margin-inline-start`, `width` to `inline-size`, and `100vw` to `100vi`.
+#### Vertical text
+
+On an element with a vertical `writing-mode`, such as `writing-mode: vertical-rl`, the inline direction runs top to bottom. So logical properties on that element map to different physical sides: `inline-size` sets its height, not its width. If you convert physical properties on these elements, check that they still look right, or keep the physical properties with a `stylelint-disable` comment.
+
+#### Turning it off
+
+To keep using physical properties, turn off the rules in your config:
+
+```js
+rules: {
+  "property-layout-mappings": null,
+  "unit-layout-mappings": null,
+  "value-keyword-layout-mappings": null,
+}
+```
 
 ### Extends
 
@@ -185,6 +184,12 @@ This is a list of the lints turned on in this configuration (beyond the ones tha
 - [`import-notation`](https://stylelint.io/user-guide/rules/import-notation/): Require `@import` paths to be strings, such as `@import 'foo.css'`, rather than `url()`. _overriding the standard rule to match the Sass convention._
 - [`no-descending-specificity`](https://stylelint.io/user-guide/rules/list/no-descending-specificity/): Disallow selectors of lower specificity from coming after overriding selectors of higher specificity. _disabled due to false positives in SCSS contexts._
 - [`rule-empty-line-before`](https://github.com/stylelint/stylelint/blob/master/lib/rules/rule-empty-line-before/): Require an empty line before multi-line rules. _overriding the standard rule to exclude the first multi-line rule in a block, and to ignore rules following comments._
+
+#### Logical properties
+
+- [`property-layout-mappings`](https://stylelint.io/user-guide/rules/property-layout-mappings/): Require logical properties, such as `margin-inline-start` instead of `margin-left`. _ignoring `overflow-x` and `overflow-y`._
+- [`unit-layout-mappings`](https://stylelint.io/user-guide/rules/unit-layout-mappings/): Require logical units, such as `vi` instead of `vw`.
+- [`value-keyword-layout-mappings`](https://stylelint.io/user-guide/rules/value-keyword-layout-mappings/): Require logical keywords, such as `float: inline-start` instead of `float: left`. _ignoring `offset-anchor` and `offset-position`._
 
 #### Order
 

@@ -69,7 +69,7 @@ describe('stylelint-high-performance-animation', () => {
 		it('corrects warning text', () => {
 			assert.equal(
 				result.results[0].warnings[0].text,
-				'Unexpected use of low performance transition property (margin-left). (plugin/no-low-performance-animation-properties)',
+				'Unexpected use of low performance transition property (margin-inline-start). (plugin/no-low-performance-animation-properties)',
 			);
 		});
 

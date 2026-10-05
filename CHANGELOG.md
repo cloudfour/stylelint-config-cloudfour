@@ -6,10 +6,32 @@
   - Added a `stylelint-config-cloudfour/scss` entry point, for applying the Sass rules to other file types, such as Vue components with `<style lang="scss">`
 - Disabled the `stylelint-scss` formatting rules that conflict with Prettier, such as `scss/operator-no-newline-after` (#638)
 - `order/order` no longer sets the position of `@include`, because since Dart Sass 1.92, an `@include`'s position decides which styles win. Variables and custom properties still come first, and declarations still come before nested rules (#528)
-- Documented how to enforce logical properties with Stylelint's built-in `*-layout-mappings` rules (#214)
+- Enabled `property-layout-mappings`, `unit-layout-mappings`, and `value-keyword-layout-mappings`, which require logical properties, units, and keywords, such as `margin-inline-start` instead of `margin-left` (#214)
+  - Set `languageOptions.directionality` to left-to-right, top-to-bottom, so `stylelint --fix` can convert physical properties
+  - `overflow-x` and `overflow-y` (#662), and physical keywords in `offset-anchor` and `offset-position` (#663), are still allowed, since browsers don't fully support their logical versions yet
 - Added `stylelint-config-standard` as a direct dependency
 
 ## Migrating from v11
+
+### All projects: logical properties
+
+This config now requires logical properties, so most projects will see many new warnings for properties like `margin-left`, `width`, and `top`. Stylelint can fix all of them automatically:
+
+1. Run `stylelint --fix` on your styles. This converts physical properties, units, and keywords to their logical versions, such as `margin-left` to `margin-inline-start`, `width` to `inline-size`, and `100vw` to `100vi`.
+2. Run `stylelint --fix` a second time. Renaming properties can put them out of alphabetical order, and the second run sorts them again.
+3. Search your styles for `writing-mode: vertical` or `writing-mode: sideways`. On those elements, logical properties map to different sides, so `inline-size` sets the height, not the width. Check that they still look right, or keep the physical properties with a `stylelint-disable` comment.
+
+If your build uses `postcss-preset-env` older than v8, or `postcss-logical` older than v6, check your compiled CSS after converting. These versions convert logical properties back to physical ones inside `[dir="ltr"]` and `[dir="rtl"]` selectors, so those styles only apply if your HTML has a `dir` attribute. To keep logical properties as written, turn that feature off:
+
+```js
+postcssPresetEnv({
+  features: {
+    "logical-properties-and-values": false
+  }
+});
+```
+
+If your project uses a right-to-left or vertical writing direction, override `languageOptions.directionality` before running `--fix`, as described in the README. To keep using physical properties, turn off the three rules in your config.
 
 ### Projects that lint CSS files
 

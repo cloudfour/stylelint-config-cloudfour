@@ -7,6 +7,7 @@ import cloudfour from './index.js';
 export default {
 	extends: ['stylelint-config-standard-scss'],
 	plugins: cloudfour.plugins,
+	languageOptions: cloudfour.languageOptions,
 	rules: {
 		...cloudfour.rules,
 		// these are being set in stylelint-standard-scss, but we don't want them

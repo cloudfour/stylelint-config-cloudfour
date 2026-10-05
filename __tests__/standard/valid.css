@@ -12,8 +12,8 @@
 
 /* Single-line comment */
 .class-foo:not(a):not(div) {
+	inset-block-start: calc(100% - 2rem);
 	margin: 0;
-	top: calc(100% - 2rem);
 }
 
 /* Flush single line comment */
@@ -21,7 +21,7 @@
 	.id-bar {
 		color: #fff;
 		font-family: Helvetica, 'Arial Black', sans-serif;
-		left: calc(var(--offset) + 50%);
+		inset-inline-start: calc(var(--offset) + 50%);
 	}
 
 	/* Flush nested single line comment */
