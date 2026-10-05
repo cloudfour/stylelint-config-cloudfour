@@ -113,6 +113,58 @@ For example, to change the `at-rule-no-unknown` rule to use its `ignoreAtRules` 
 
 No. This config disables the kebab-case naming patterns from `stylelint-config-standard-scss` for classes, IDs, custom properties, custom media, keyframes, cascade layers, containers, and Sass mixins, functions, variables, and placeholders, so that it works with naming conventions like [SUIT CSS](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md). If you want to enforce a convention, add the pattern rules or a plugin like [stylelint-selector-bem-pattern](https://github.com/simonsmith/stylelint-selector-bem-pattern) to your own config.
 
+### Does this config enforce logical properties?
+
+No. [Logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values), such as `margin-inline-start` instead of `margin-left`, adapt to the page's writing direction, which matters for sites that support right-to-left or vertical languages. However, most existing projects use physical properties like `width` and `height` throughout, so turning this on by default would flag hundreds or thousands of lines in a typical project.
+
+If you want to enforce logical properties, Stylelint has three built-in rules for it. Add them to your own config:
+
+```js
+{
+  extends: ["stylelint-config-cloudfour"],
+  rules: {
+    "property-layout-mappings": "flow-relative",
+    "unit-layout-mappings": "flow-relative",
+    "value-keyword-layout-mappings": "flow-relative",
+  },
+}
+```
+
+- [`property-layout-mappings`](https://stylelint.io/user-guide/rules/property-layout-mappings/) flags physical properties, such as `margin-left`, `top`, and `width`.
+- [`unit-layout-mappings`](https://stylelint.io/user-guide/rules/unit-layout-mappings/) flags physical units, such as `vw` and `vh`.
+- [`value-keyword-layout-mappings`](https://stylelint.io/user-guide/rules/value-keyword-layout-mappings/) flags physical keywords, such as `float: left` and `text-align: right`.
+
+Shorthand properties with physical sides, such as `margin: 0 1rem 0 2rem`, aren't flagged yet ([stylelint/stylelint#9420](https://github.com/stylelint/stylelint/issues/9420)).
+
+#### Adopting logical properties gradually
+
+Most of the warnings in an existing project come from `width`, `height`, `vw`, and `vh`. To start with everything else, ignore those for now:
+
+```js
+rules: {
+  "property-layout-mappings": ["flow-relative", { ignoreProperties: ["width", "height"] }],
+  "unit-layout-mappings": ["flow-relative", { ignoreUnits: ["vw", "vh"] }],
+  "value-keyword-layout-mappings": "flow-relative",
+}
+```
+
+#### Fixing automatically
+
+These rules can only fix problems automatically if Stylelint knows your page's writing direction, because a physical side like `left` maps to a different logical side in each direction. For a left-to-right, top-to-bottom language like English, add this to your config:
+
+```js
+{
+  languageOptions: {
+    directionality: {
+      block: "top-to-bottom",
+      inline: "left-to-right",
+    },
+  },
+}
+```
+
+Then `stylelint --fix` will convert, for example, `margin-left` to `margin-inline-start`, `width` to `inline-size`, and `100vw` to `100vi`.
+
 ### Extends
 
 - [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard): The standard shareable config for Stylelint.

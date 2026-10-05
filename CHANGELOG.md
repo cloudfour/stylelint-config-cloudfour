@@ -6,6 +6,7 @@
   - Added a `stylelint-config-cloudfour/scss` entry point, for applying the Sass rules to other file types, such as Vue components with `<style lang="scss">`
 - Disabled the `stylelint-scss` formatting rules that conflict with Prettier, such as `scss/operator-no-newline-after` (#638)
 - `order/order` no longer sets the position of `@include`, because since Dart Sass 1.92, an `@include`'s position decides which styles win. Variables and custom properties still come first, and declarations still come before nested rules (#528)
+- Documented how to enforce logical properties with Stylelint's built-in `*-layout-mappings` rules (#214)
 - Added `stylelint-config-standard` as a direct dependency
 
 ## Migrating from v11
