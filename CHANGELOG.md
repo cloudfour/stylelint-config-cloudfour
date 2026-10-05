@@ -4,11 +4,82 @@
   - `.css` files are now parsed as CSS, and get core rules that `stylelint-config-standard-scss` turns off, such as `declaration-property-value-no-unknown`, `at-rule-prelude-no-invalid`, `media-query-no-invalid`, and `no-duplicate-selectors`
   - `at-rule-disallowed-list` (`@extend` and `@import`) now only applies to `.scss` files
   - Added a `stylelint-config-cloudfour/scss` entry point, for applying the Sass rules to other file types, such as Vue components with `<style lang="scss">`
-  - Migrating CSS projects: remove any `scss/*` or `at-rule-disallowed-list` overrides, and move `ignoreAtRules` options from `scss/at-rule-no-unknown` to `at-rule-no-unknown`
-  - Migrating Vue projects that use `<style lang="scss">`: Sass blocks now get the CSS rules by default, which report Sass at-rules like `@use` as unknown. Apply `stylelint-config-cloudfour/scss` to `.vue` files, as described in the README
-  - Migrating PostCSS plugin projects: custom syntax like `svg-load()` or `@define-mixin` may now be flagged by `declaration-property-value-no-unknown` or `at-rule-prelude-no-invalid`, and need ignore options
 - Disabled the `stylelint-scss` formatting rules that conflict with Prettier, such as `scss/operator-no-newline-after` (#638)
 - Added `stylelint-config-standard` as a direct dependency
+
+## Migrating from v11
+
+### Projects that lint CSS files
+
+Your `.css` files were previously parsed as Sass, which turned off several of Stylelint's CSS validity rules. Those rules now run, so you may see new warnings after upgrading. Most of them point to real bugs, such as a unit on a unitless property (`opacity: 0.5em`), an invalid value (`padding: auto`), or a duplicated selector. Fix these in your CSS.
+
+The Sass rules no longer run on `.css` files, so you can remove any overrides you added to work around them:
+
+- Remove any rules that start with `scss/`, such as `"scss/operator-no-newline-after": null`.
+- Remove any override of `at-rule-disallowed-list`. It used to ban `@import` in CSS files, but now only applies to Sass files.
+- If you configured `ignoreAtRules` on `scss/at-rule-no-unknown`, move those options to the core `at-rule-no-unknown` rule instead:
+
+  ```js
+  // Before
+  "scss/at-rule-no-unknown": [true, { ignoreAtRules: ["define-mixin"] }],
+
+  // After
+  "at-rule-no-unknown": [true, { ignoreAtRules: ["define-mixin"] }],
+  ```
+
+### Projects that use PostCSS plugins
+
+If your CSS uses syntax from PostCSS plugins, such as `postcss-mixins` or `postcss-inline-svg`, the newly enabled CSS rules may report that syntax as invalid. Add ignore options for the at-rules and functions your plugins provide. For example:
+
+```js
+rules: {
+  // @define-mixin and @mixin from postcss-mixins
+  "at-rule-no-unknown": [true, { ignoreAtRules: ["define-mixin", "mixin"] }],
+  "at-rule-prelude-no-invalid": [true, { ignoreAtRules: ["mixin"] }],
+  // svg-load() from postcss-inline-svg, in any property
+  "declaration-property-value-no-unknown": [
+    true,
+    { ignoreProperties: { "/.+/": "/svg-load\\(/" } },
+  ],
+}
+```
+
+### Projects that lint Sass files
+
+No changes are required. Sass files get the same rules as before, except for the `stylelint-scss` formatting rules that conflict with Prettier. If you turned any of those off in your own config, you can remove those overrides:
+
+- `scss/at-else-closing-brace-newline-after`
+- `scss/at-else-closing-brace-space-after`
+- `scss/at-else-empty-line-before`
+- `scss/at-else-if-parentheses-space-before`
+- `scss/at-function-parentheses-space-before`
+- `scss/at-if-closing-brace-newline-after`
+- `scss/at-if-closing-brace-space-after`
+- `scss/at-mixin-parentheses-space-before`
+- `scss/dollar-variable-colon-space-after`
+- `scss/dollar-variable-colon-space-before`
+- `scss/operator-no-newline-after`
+- `scss/operator-no-newline-before`
+- `scss/operator-no-unspaced`
+
+### Vue projects that use `<style lang="scss">`
+
+Previously, Vue components got the Sass rules. Now they get the CSS rules by default, which report Sass features like `@use` and `@include` as unknown at-rules. To lint your components as Sass, apply the Sass config to `.vue` files:
+
+```js
+{
+  extends: ["stylelint-config-cloudfour"],
+  overrides: [
+    {
+      files: ["**/*.vue"],
+      extends: ["stylelint-config-cloudfour/scss"],
+      customSyntax: "postcss-html",
+    },
+  ],
+}
+```
+
+If your components mix Sass and plain CSS, see [the README](README.md#sass-in-other-file-types) for the trade-offs.
 
 # 11.0.0 - 2026-10-01
 

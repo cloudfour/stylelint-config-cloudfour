@@ -61,7 +61,13 @@ If your components use Sass, you can apply the Sass config to them with `styleli
 }
 ```
 
-Now every `<style>` block in your components is linted with the Sass rules, including plain `<style>` blocks. That won't cause false errors, since Sass is a superset of CSS. However, the CSS rules that `stylelint-config-standard-scss` turns off because they misreport Sass syntax won't run on any block. So your plain CSS won't be checked for these:
+Now every `<style>` block in your components is linted with the Sass rules.
+
+##### What if my project uses both Sass and CSS?
+
+This config can't fully support components that mix Sass and plain CSS. Because Stylelint applies one config to the whole file, enabling the Sass config means every `<style>` block is linted as Sass, even blocks that are plain CSS.
+
+That won't cause false errors, since Sass is a superset of CSS. However, `stylelint-config-standard-scss` turns off some CSS rules because they misreport Sass syntax, and those rules won't run on any block. So your plain CSS won't be checked for these:
 
 - [`annotation-no-unknown`](https://stylelint.io/user-guide/rules/annotation-no-unknown/)
 - [`at-rule-descriptor-no-unknown`](https://stylelint.io/user-guide/rules/at-rule-descriptor-no-unknown/)
