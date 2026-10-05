@@ -1,4 +1,4 @@
-# 12.0.0 - Unreleased
+# 12.0.0 - 2026-10-05
 
 - Sass rules and the SCSS parser now only apply to `.scss` files (#638)
   - `.css` files are now parsed as CSS, and get core rules that `stylelint-config-standard-scss` turns off, such as `declaration-property-value-no-unknown`, `at-rule-prelude-no-invalid`, `media-query-no-invalid`, and `no-duplicate-selectors`
