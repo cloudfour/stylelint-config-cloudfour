@@ -17,6 +17,7 @@ describe('stylelint-declaration-block-no-ignored-properties', () => {
 		beforeEach(async () => {
 			result = await stylelint.lint({
 				code: validCss,
+				codeFilename: 'input.css',
 				config,
 			});
 		});
@@ -52,6 +53,7 @@ describe('stylelint-declaration-block-no-ignored-properties', () => {
 		beforeEach(async () => {
 			result = await stylelint.lint({
 				code: invalidCss,
+				codeFilename: 'input.css',
 				config,
 			});
 		});
