@@ -136,7 +136,7 @@ This is a list of the lints turned on in this configuration (beyond the ones tha
 
 #### Order
 
-- [`order/order`](https://github.com/hudochenkov/stylelint-order/blob/master/rules/order/README.md): Specifies the order of content within declaration blocks: Variables, `@include` statements, declarations, block `@include` statements, nested rules.
+- [`order/order`](https://github.com/hudochenkov/stylelint-order/blob/master/rules/order/README.md): Specifies the order of content within declaration blocks: Sass variables, custom properties, declarations, nested rules. `@include` can go anywhere, since its position decides which styles win.
 - [`order/properties-alphabetical-order`](https://github.com/hudochenkov/stylelint-order/blob/master/rules/properties-alphabetical-order/README.md): Specify the alphabetical order of properties within declaration blocks.
 
 #### SCSS

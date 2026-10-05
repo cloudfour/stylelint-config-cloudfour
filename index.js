@@ -43,24 +43,9 @@ export default {
 		],
 		// rules from plugins
 		'order/properties-alphabetical-order': true,
-		'order/order': [
-			[
-				'dollar-variables',
-				'custom-properties',
-				{
-					type: 'at-rule',
-					name: 'include',
-					hasBlock: false,
-				},
-				'declarations',
-				{
-					type: 'at-rule',
-					name: 'include',
-					hasBlock: true,
-				},
-				'rules',
-			],
-		],
+		// @include is left unordered: since Sass 1.92, its position decides which
+		// styles win, so reordering it (including with --fix) changes the CSS (#528)
+		'order/order': [['dollar-variables', 'custom-properties', 'declarations', 'rules']],
 		'plugin/declaration-block-no-ignored-properties': true,
 		'plugin/no-low-performance-animation-properties': [true, { ignore: 'paint-properties' }],
 	},
