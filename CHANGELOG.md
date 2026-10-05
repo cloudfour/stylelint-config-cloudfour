@@ -1,3 +1,14 @@
+# 12.0.0 - Unreleased
+
+- Sass rules and the SCSS parser now only apply to `.scss` files (#638)
+  - `.css` files are now parsed as CSS, and get core rules that `stylelint-config-standard-scss` turns off, such as `declaration-property-value-no-unknown`, `at-rule-prelude-no-invalid`, `media-query-no-invalid`, and `no-duplicate-selectors`
+  - `at-rule-disallowed-list` (`@extend` and `@import`) now only applies to `.scss` files
+  - Added a `stylelint-config-cloudfour/scss` entry point, for applying the Sass rules to other file types, such as Vue components with `<style lang="scss">`
+  - Migrating CSS projects: remove any `scss/*` or `at-rule-disallowed-list` overrides, and move `ignoreAtRules` options from `scss/at-rule-no-unknown` to `at-rule-no-unknown`
+  - Migrating PostCSS plugin projects: custom syntax like `svg-load()` or `@define-mixin` may now be flagged by `declaration-property-value-no-unknown` or `at-rule-prelude-no-invalid`, and need ignore options
+- Disabled the `stylelint-scss` formatting rules that conflict with Prettier, such as `scss/operator-no-newline-after` (#638)
+- Added `stylelint-config-standard` as a direct dependency
+
 # 11.0.0 - 2026-10-01
 
 - Removed `stylelint-config-suitcss`, which is no longer maintained and was blocking the upgrade to Stylelint v17 (#636)

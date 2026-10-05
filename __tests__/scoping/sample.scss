@@ -1,0 +1,11 @@
+// Sass comment
+$gutter: 1rem;
+
+.fooBar {
+  margin: math.div($gutter, 2) +
+    $gutter;
+
+  & .bar {
+    color: red;
+  }
+}

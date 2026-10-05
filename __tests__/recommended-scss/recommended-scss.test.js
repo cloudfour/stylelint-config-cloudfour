@@ -17,6 +17,7 @@ describe('stylelint-recommended-scss', () => {
 		beforeEach(async () => {
 			result = await stylelint.lint({
 				code: validScss,
+				codeFilename: 'input.scss',
 				config,
 			});
 		});
@@ -52,6 +53,7 @@ describe('stylelint-recommended-scss', () => {
 		beforeEach(async () => {
 			result = await stylelint.lint({
 				code: invalidScss,
+				codeFilename: 'input.scss',
 				config,
 			});
 		});

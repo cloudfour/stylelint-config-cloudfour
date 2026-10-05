@@ -1,5 +1,5 @@
 export default {
-	extends: ['stylelint-config-standard-scss'],
+	extends: ['stylelint-config-standard'],
 	plugins: [
 		'stylelint-declaration-block-no-ignored-properties',
 		'stylelint-high-performance-animation',
@@ -17,18 +17,7 @@ export default {
 		'layer-name-pattern': null,
 		'selector-class-pattern': null,
 		'selector-id-pattern': null,
-		'scss/at-function-pattern': null,
-		'scss/at-mixin-pattern': null,
-		'scss/dollar-variable-pattern': null,
-		'scss/percent-placeholder-pattern': null,
 		// our rules from here on
-		'at-rule-disallowed-list': [
-			['extend', 'import'],
-			{
-				severity: 'error',
-				message: 'Prefer @use and @forward rather than @import.',
-			},
-		],
 		'at-rule-empty-line-before': null,
 		'comment-empty-line-before': [
 			'always',
@@ -36,6 +25,7 @@ export default {
 				except: ['first-nested'],
 			},
 		],
+		'import-notation': 'string',
 		'no-descending-specificity': null,
 		'rule-empty-line-before': [
 			'always-multi-line',
@@ -73,7 +63,14 @@ export default {
 		],
 		'plugin/declaration-block-no-ignored-properties': true,
 		'plugin/no-low-performance-animation-properties': [true, { ignore: 'paint-properties' }],
-		'scss/declaration-nested-properties': 'never',
-		'scss/selector-no-redundant-nesting-selector': true,
 	},
+	overrides: [
+		{
+			// Sass rules and the SCSS parser only apply to Sass files, so plain CSS
+			// is parsed as CSS and keeps the validity rules that standard-scss turns
+			// off (#638). Globs without a slash match the basename at any depth.
+			files: ['*.scss', '**/*.scss'],
+			extends: ['./scss.js'],
+		},
+	],
 };
