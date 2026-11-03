@@ -1,3 +1,7 @@
+# Unreleased
+
+- Raised the `stylelint` peer dependency from `^17.0.0` to `^17.10.0`, the first version with the logical-property rules this config has enabled since 12.0.0 (#214). On stylelint 17.0 to 17.9, 12.0.0 fails with errors like "Unknown rule property-layout-mappings". If you saw those, update stylelint to 17.10.0 or later.
+
 # 12.0.0 - 2026-10-05
 
 - Sass rules and the SCSS parser now only apply to `.scss` files (#638)
