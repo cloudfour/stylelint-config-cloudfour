@@ -53,10 +53,10 @@
     "postcss": "8.5.32",
     "prettier": "3.9.10",
     "remark-cli": "12.0.1",
-    "stylelint": "17.16.0"
+    "stylelint": "18.0.0"
   },
   "peerDependencies": {
-    "stylelint": "^17.10.0"
+    "stylelint": "^18.0.0"
   },
   "engines": {
     "node": ">=20.19.0"
